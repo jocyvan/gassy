@@ -1,4 +1,4 @@
-%nav.top-bar{"data-topbar" => "", :role => "navigation"}
+%nav.top-bar{"data-topbar" => "", :role => "navigation", "data-options" => "is_hover: false"}
   %ul.title-area
     %li.name
       %h1
@@ -9,12 +9,14 @@
   %section.top-bar-section
     / Right Nav Section
     %ul.right
-      %li.has-dropdown
-        = link_to 'Jocyvan Castro', '#'
-        %ul.dropdown
-          %li= link_to 'Edit profile', '#'
-          %li.active.alert= link_to 'Logout', '#'
-      %li.active= link_to 'Sign in', '#'
+      - if user_signed_in?
+        %li.has-dropdown
+          = link_to current_user.name, '#'
+          %ul.dropdown
+            %li= link_to 'Edit profile', edit_user_registration_path
+            %li.active= link_to 'Logout', destroy_user_session_path, method: :delete
+      - else
+        %li.has-form= link_to 'Sign in', new_user_session_path, class: 'button'
     / Left Nav Section
     / %ul.left
     /   %li

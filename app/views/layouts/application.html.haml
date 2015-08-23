@@ -4,17 +4,20 @@
   %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %meta{:charset => "utf-8"}/
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-  %title= content_for?(:title) ? yield(:title) : "foundation-rails"
-  = stylesheet_link_tag    "application"
+  %title= content_for?(:title) ? "Gassy - #{yield(:title)}" : "Gassy"
+  = stylesheet_link_tag :application
   = javascript_include_tag "vendor/modernizr"
   = csrf_meta_tags
   %body
     = render 'layouts/navigation'
     = render 'layouts/messages'
+
     %main
       = yield
 
-    = yield :js
-
     %footer
       = render  'layouts/footer'
+
+    = javascript_include_tag :application
+    = yield :scripts
+    = yield :js

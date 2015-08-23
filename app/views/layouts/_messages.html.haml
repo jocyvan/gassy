@@ -6,4 +6,4 @@
   - if msg.is_a?(String)
     %div{:class => "alert-box radius #{name.to_s == 'notice' ? 'success' : 'alert'}", "data-alert" => ""}
       = content_tag :div, msg
-      = link_to '&times;', '#', class: 'close'
+      %a.close{ href: '#' } &times;

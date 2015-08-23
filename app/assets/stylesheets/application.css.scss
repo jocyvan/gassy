@@ -17,6 +17,7 @@
 
 main {
   width: 80%;
+  min-height: 85%;
   margin: 0 auto;
   padding: 1rem 0;
   box-shadow: 0 0 0.325rem 0 rgba(0,0,0,0.5);
@@ -25,4 +26,31 @@ main {
 footer {
   background-color: #eee;
   padding: 1rem 0;
+}
+
+//============================================================
+//  Alert-box Z
+//============================================================
+.alert-box {
+  bottom: 3rem;
+  left: -100%;
+  position: fixed;
+  width: 21rem;
+  z-index: 999;
+}
+
+.hint {
+  color: $secondary-color;
+  font-size: 12px;
+  margin-top: -1rem;
+  min-height: 1rem;
+}
+
+.authform {
+  @extend .panel;
+  margin: 0 auto;
+  overflow: hidden;
+  .button.right {
+    margin-bottom: 0
+  }
 }
