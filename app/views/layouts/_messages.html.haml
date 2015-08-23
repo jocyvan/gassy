@@ -1,0 +1,9 @@
+= content_for :js do
+  = javascript_tag "$('.alert-box').animate({left:'-3'}, 1000);setTimeout(\"$('.alert-box').animate({left:'-100%'}, 1000)\", 5000); $('.timedout').hide()"
+
+-# Rails flash messages styled for Zurb Foundation
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    %div{:class => "alert-box radius #{name.to_s == 'notice' ? 'success' : 'alert'}", "data-alert" => ""}
+      = content_tag :div, msg
+      = link_to '&times;', '#', class: 'close'
