@@ -28,6 +28,15 @@ footer {
   padding: 1rem 0;
 }
 
+.reveal-modal#station-modal {
+  padding: 0;
+}
+
+#map-canvas {
+  min-height: 32rem;
+  margin-bottom: 2rem;
+}
+
 //============================================================
 //  Alert-box Z
 //============================================================
@@ -52,5 +61,96 @@ footer {
   overflow: hidden;
   .button.right {
     margin-bottom: 0
+  }
+}
+
+.stationform {
+  @extend .authform;
+}
+
+// ====================================
+// Station
+// ====================================
+
+.station-header {
+  font-family: 'OpenSansBold';
+  background-color: $primary-color;
+  color: #fff;
+  min-height: 35%;
+  position: relative;
+}
+
+.station-card {
+  z-index: 5;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  box-shadow: 0;
+  transition: box-shadow 0.2s;
+  position: relative;
+
+  a, a:hover {
+    color: #000;
+  }
+
+  &:hover{
+    box-shadow: 0 0 5px #bbb;
+  }
+
+  img {
+    z-index: -1;
+  }
+}
+
+.station-show {
+  .header {
+    font-family: 'OpenSansBold';
+    background-color: $primary-color;
+    color: #fff;
+    padding: 1rem 0.5rem;
+  }
+
+  #map-canvas {
+    min-height: 30rem;
+  }
+}
+
+.ribbon {
+  z-index: 9;
+  position: relative;
+  float: right;
+  top: -0.25em;
+  width: 25px;
+  transition: box-shadow 0.2s;
+  background: $primary-color;
+  padding: 0.2em 0;
+  margin-right: 0.5rem;
+  text-align: center;
+
+  a, a:hover {
+    color: #fff;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &.secondary {
+    background: $secondary-color;
+  }
+
+  &.alert {
+    background: $alert-color;
+  }
+
+  &.success {
+    background: $success-color;
+  }
+
+  &.warning {
+    background: $warning-color;
+  }
+
+  &.info {
+    background: $info-color;
   }
 }

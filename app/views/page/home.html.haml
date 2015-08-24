@@ -1,6 +1,31 @@
+= content_for :js do
+  = javascript_tag do
+    $(document).ready(function(){
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showMap);
+    }
+    });
+
+    function showMap(position){
+    var mapOptions = {
+    center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+    zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map($('#map-canvas')[0] ,mapOptions);
+
+    marker = new google.maps.Marker({
+    animation: google.maps.Animation.DROP,
+    position: map.getCenter(),
+    map: map
+    });
+    }
+
 %h4.text-center Find a gas station
 
-%p= image_tag 'http://placehold.it/1050x500'
+-# %p= image_tag 'http://placehold.it/1050x500'
+#map-canvas
 
 .row
   .large-4.columns.text-center

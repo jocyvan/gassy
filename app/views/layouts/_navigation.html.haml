@@ -7,17 +7,18 @@
     %li.toggle-topbar.menu-icon
       = link_to 'Menu', '#'
   %section.top-bar-section
-    / Right Nav Section
-    %ul.right
-      - if user_signed_in?
+    - if user_signed_in?
+      / Left Nav Section
+      %ul.left
+        %li= link_to 'My stations', stations_path
+      / Right Nav Section
+      %ul.right
+        %li.has-form= link_to 'New station', new_station_path, class: 'button'
         %li.has-dropdown
           = link_to current_user.name, '#'
           %ul.dropdown
             %li= link_to 'Edit profile', edit_user_registration_path
             %li.active= link_to 'Logout', destroy_user_session_path, method: :delete
-      - else
+    - else
+      %ul.right
         %li.has-form= link_to 'Sign in', new_user_session_path, class: 'button'
-    / Left Nav Section
-    / %ul.left
-    /   %li
-    /     = link_to 'Left Nav Button', '#'

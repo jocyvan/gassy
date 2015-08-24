@@ -1,7 +1,9 @@
- ☐ Config devise
- ☐ Validate user
+ ☐ Create and config Station base
  ☐ Client side validate
- 
+ ☐ Alter marker icon on home
+
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Config devise @done (15-08-23 19:45)
+ ✔ Validate user @done (15-08-23 19:45)
  ✔ Install devise @done (15-08-23 13:28)

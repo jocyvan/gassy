@@ -1,0 +1,10 @@
+%li
+  .station-card
+    = link_to fa_icon('times'), station, method: :delete, class: 'ribbon alert', 'data-confirm': 'Are you sure?'
+    = link_to fa_icon('pencil'), edit_station_path(station), class: 'ribbon secondary'
+    = link_to station, :data => {'reveal-id' => 'station-modal', 'reveal-ajax' => 'true'} do
+      .row.collapse
+        .large-4.small-4.columns= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{station.latitude},#{station.longitude}&zoom=15&size=160x140&markers=#{station.latitude},#{station.longitude}"
+        .large-8.small-8.columns
+          .station-header= station.name
+          %div= station.city

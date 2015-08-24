@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true, on: :update
   validates :email, uniqueness: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/, message: "is not an email" }
 
-
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :stations
 end
