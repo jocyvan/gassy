@@ -1,13 +1,22 @@
-.row
-  .large-12.columns
-    %h4 Listing stations
-    %hr
+.station-index
+  .row
+    .large-12.columns
+      %h4
+        .row
+          .large-6.columns
+            = form_for my_stations_path, method: :get, class: 'search-station' do
+              .row.collapse
+                .large-8.columns= text_field_tag :q, nil, placeholder: 'Search', style: 'margin-bottom:0'
+                .large-4.columns= link_to fa_icon('search'), '#', class: 'button prefix', onclick: 'form.submit();return false;'
+          .large-6.columns
+            .pagination.right= paginate @stations
+      %hr{style: 'margin-top:0'}
 
-    - if @stations.any?
-      %ul.large-block-grid-2.medium-block-grid-2.small-block-grid-1
-        = render @stations
-      = paginate @stations
-    - else
-      .row
-        .large-12.small-12.columns.text-center
-          No station yet
+      - if @stations.any?
+        %ul.large-block-grid-2.medium-block-grid-2.small-block-grid-1
+          = render @stations
+        .pagination-centered= paginate @stations
+      - else
+        .row
+          .large-12.small-12.columns.text-center
+            No station yet

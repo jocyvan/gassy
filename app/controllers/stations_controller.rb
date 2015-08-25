@@ -11,7 +11,7 @@ class StationsController < ApplicationController
   end
 
   def my
-    @stations = current_user.stations.page(params[:page])
+    @stations = current_user.stations.where("name ILIKE ?", "%#{params[:q]}%").page(params[:page])
     render :index
   end
 
