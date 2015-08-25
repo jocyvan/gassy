@@ -1,10 +1,18 @@
 class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
+  authorize_resource
+
   # GET /stations
   # GET /stations.json
   def index
     @stations = Station.all
+    authorize! :list, Station
+  end
+
+  def my
+    @stations = current_user.stations.all
+    render :index
   end
 
   # GET /stations/1
@@ -14,7 +22,7 @@ class StationsController < ApplicationController
 
   # GET /stations/new
   def new
-    @station = Station.new
+    @station = current_user.stations.new
   end
 
   # GET /stations/1/edit

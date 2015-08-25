@@ -18,10 +18,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  def update
-    super
-    puts(resource.errors.full_messages)
-  end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
   # def destroy

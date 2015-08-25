@@ -7,6 +7,7 @@
 .station-show
   .header
     == #{@station.name} - #{@station.city}
-    = link_to fa_icon('pencil', text: 'Edit'), edit_station_path(@station), class: 'label secondary small'
-    = link_to fa_icon('times', text: 'Delete'), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
+    - if can? :manage, @station
+      = link_to fa_icon('pencil', text: 'Edit'), edit_station_path(@station), class: 'label secondary small'
+      = link_to fa_icon('times', text: 'Delete'), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
   #map-canvas

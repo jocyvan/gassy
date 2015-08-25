@@ -26,6 +26,7 @@ gem 'foundation-rails', '5.5.2.1'
 gem 'font-awesome-rails', '4.4.0'
 gem 'simple_form', '3.1.0'
 gem 'devise', '3.5.2'
+gem 'cancancan', '1.12.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

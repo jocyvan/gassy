@@ -10,7 +10,11 @@
     - if user_signed_in?
       / Left Nav Section
       %ul.left
-        %li= link_to 'My stations', stations_path
+        %li.has-dropdown
+          = link_to 'Stations', '#'
+          %ul.dropdown
+            %li= link_to 'My stations', my_stations_path
+            %li= link_to 'Favorites', '#'
       / Right Nav Section
       %ul.right
         %li.has-form= link_to 'New station', new_station_path, class: 'button'

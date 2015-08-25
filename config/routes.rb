@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :stations
+  resources :stations do
+    collection { get :my }
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
