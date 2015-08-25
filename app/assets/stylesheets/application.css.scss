@@ -35,6 +35,7 @@ footer {
 #map-canvas {
   min-height: 32rem;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 //============================================================
@@ -72,21 +73,24 @@ footer {
 // Station
 // ====================================
 
-.station-header {
-  font-family: 'OpenSansBold';
-  background-color: $primary-color;
-  color: #fff;
-  min-height: 35%;
-  position: relative;
-}
-
 .station-card {
+  $corner: 5px;
+
   z-index: 5;
-  border-radius: 5px;
+  border-radius: $corner;
   border: 1px solid #eee;
   box-shadow: 0;
   transition: box-shadow 0.2s;
   position: relative;
+  
+  .header {
+    font-family: 'OpenSansBold';
+    background-color: $primary-color;
+    color: #fff;
+    min-height: 35%;
+    border-top-right-radius: $corner;
+    padding: 0.75rem;
+  }
 
   a, a:hover {
     color: #000;
@@ -98,6 +102,8 @@ footer {
 
   img {
     z-index: -1;
+    border-bottom-left-radius: $corner;
+    border-top-left-radius: $corner;
   }
 }
 
@@ -107,23 +113,20 @@ footer {
     background-color: $primary-color;
     color: #fff;
     padding: 1rem 0.5rem;
-  }
-
-  #map-canvas {
-    min-height: 30rem;
+    margin-top: -1rem;
   }
 }
 
 .ribbon {
   z-index: 9;
-  position: relative;
-  float: right;
-  top: -0.25em;
+  position: absolute;
+  top: -0.2rem;
+  right: 0.45rem;
   width: 25px;
   transition: box-shadow 0.2s;
   background: $primary-color;
   padding: 0.2em 0;
-  margin-right: 0.5rem;
+  margin-right: 0.45rem;
   text-align: center;
 
   a, a:hover {
@@ -136,6 +139,7 @@ footer {
 
   &.secondary {
     background: $secondary-color;
+    right: 2.45rem;
   }
 
   &.alert {
@@ -152,5 +156,6 @@ footer {
 
   &.info {
     background: $info-color;
+    right: 0.45rem;
   }
 }

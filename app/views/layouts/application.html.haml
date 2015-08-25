@@ -18,30 +18,10 @@
     %footer
       = render  'layouts/footer'
 
-
     = yield :modal
     #station-modal.reveal-modal.medium{:'data-reveal' => ''}
 
     = javascript_include_tag :application
-    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBiZilNtYRNKHXAOSmwmJapyNsklTyKQIk"
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBiZilNtYRNKHXAOSmwmJapyNsklTyKQIk"
     
     = yield :js
-    = javascript_tag do
-      $(document).ready(function(){
-      $(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
-      var city = new google.maps.LatLng(-2,-44);
-      var mapOptions = {
-      center: city,
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-
-      map = new google.maps.Map($('#map-canvas')[0] ,mapOptions);
-
-      marker = new google.maps.Marker({
-      animation: google.maps.Animation.DROP,
-      position: city,
-      map: map
-      });
-      });
-      });

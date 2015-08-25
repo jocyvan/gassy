@@ -10,7 +10,6 @@ class StationsController < ApplicationController
   # GET /stations/1
   # GET /stations/1.json
   def show
-    render layout: false
   end
 
   # GET /stations/new
@@ -29,7 +28,7 @@ class StationsController < ApplicationController
 
     respond_to do |format|
       if @station.save
-        format.html { redirect_to stations_path, notice: 'Station was successfully created.' }
+        format.html { redirect_to @station, notice: 'Station was successfully created.' }
         format.json { render :show, status: :created, location: @station }
       else
         format.html { render :new }

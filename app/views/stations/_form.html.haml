@@ -1,12 +1,22 @@
+= content_for :js do
+  = javascript_tag do
+    $(document).ready(function(){
+    - if @station.new_record?
+      autocompleteCity('station');
+    - else
+      autocompleteCity('station', new google.maps.LatLng("#{@station.latitude}", "#{@station.longitude}"));
+    });
+
 = simple_form_for(@station) do |f|
   .row
     .large-6.columns= f.input :name
     .large-6.columns= f.input :city
+    = f.input :longitude, as: :hidden
+    = f.input :latitude, as: :hidden
+  
+  #map-canvas{style: 'margin: 0 -1.25rem'}
+  
   .row
-    .large-12.columns
-      = f.input :latitude
-      = f.input :longitude
-  .row
-    .large-12.columns
+    .large-12.columns{style: 'margin-top: 1.25rem'}
       = f.button :submit, class: 'small right'
       = link_to 'Back', :back, class: 'button small right back secondary' unless f.object.new_record?
