@@ -10,7 +10,7 @@
 = simple_form_for(@station) do |f|
   .row
     .large-6.columns= f.input :name
-    .large-6.columns= f.input :city
+    .large-6.columns= f.input :city, placeholder: 'Enter a city'
     = f.input :longitude, as: :hidden
     = f.input :latitude, as: :hidden
   

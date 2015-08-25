@@ -1,5 +1,7 @@
 class Station < ActiveRecord::Base
-  belongs_to :user
+  paginates_per 10
 
   validates :name, :city, presence: true
+  
+  belongs_to :user
 end

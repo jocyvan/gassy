@@ -6,6 +6,7 @@
     - if @stations.any?
       %ul.large-block-grid-2.medium-block-grid-2.small-block-grid-1
         = render @stations
+      = paginate @stations
     - else
       .row
         .large-12.small-12.columns.text-center
