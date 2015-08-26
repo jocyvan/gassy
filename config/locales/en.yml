@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  new_station: "New station"
+  edit: "Edit"
+  delete: "Delete"
+  first: "First"
+  last: "Last"

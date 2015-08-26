@@ -17,7 +17,7 @@
             %li= link_to 'Favorites', '#'
       / Right Nav Section
       %ul.right
-        %li.has-form= link_to 'New station', new_station_path, class: 'button'
+        %li.has-form= link_to t('new_station'), new_station_path, class: 'button'
         %li.has-dropdown
           = link_to current_user.name, '#'
           %ul.dropdown

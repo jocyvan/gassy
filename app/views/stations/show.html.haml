@@ -1,13 +1,53 @@
 = content_for :js do
+  = javascript_include_tag "https://www.google.com/jsapi"
   = javascript_tag do
     $(document).ready(function(){
     showMap(new google.maps.LatLng("#{@station.latitude}","#{@station.longitude}"));
     });
 
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart);
+
+
+    // Callback that creates and populates a data table, 
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Slices');
+    data.addRows([
+    ['Likes', parseInt("#{@station.rates.like.size}")],
+    ['Unlikes', parseInt("#{@station.rates.unlike.size}")]
+    ]);
+
+    // Set chart options
+    var options = {'title':'Rates'};
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+    }
+
 .station-show
   .header
-    == #{@station.name} - #{@station.city}
+    = @station.name
     - if can? :manage, @station
-      = link_to fa_icon('pencil', text: 'Edit'), edit_station_path(@station), class: 'label secondary small'
-      = link_to fa_icon('times', text: 'Delete'), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
-  #map-canvas
+      = link_to fa_icon('pencil', text: t('edit')), edit_station_path(@station), class: 'label secondary small'
+      = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
+    .right
+      = link_to fa_icon('thumbs-up'), like_station_path, title: 'Like', class: "like #{'active' if @my_rate.like?}", remote: true
+      = link_to fa_icon('thumbs-down'), unlike_station_path, title: 'Unlike', class: "unlike #{'active' if @my_rate.unlike?}", remote: true
+  .body
+    .row.collapse
+      .large-6.columns
+        #map-canvas
+      .large-6.columns
+        .content
+          %b City:
+          = @station.city
+          #chart_div

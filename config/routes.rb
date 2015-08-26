@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :stations do
     collection { get :my }
+    member { get :like, :unlike }
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations'

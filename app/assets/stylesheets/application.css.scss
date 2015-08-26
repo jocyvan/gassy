@@ -15,10 +15,15 @@
  *= require_self
  */
 
+body {
+  background-color: #eee;
+}
+
 main {
+  background-color: $white;
   width: 80%;
   min-height: 85%;
-  margin: 0 auto;
+  margin: 0 auto 2px;
   padding: 1rem 0;
   box-shadow: 0 0 0.325rem 0 rgba(0,0,0,0.5);
 }
@@ -82,22 +87,9 @@ footer {
   box-shadow: 0;
   transition: box-shadow 0.2s;
   position: relative;
-  
-  .header {
-    font-family: 'OpenSansBold';
-    background-color: $primary-color;
-    color: #fff;
-    min-height: 35%;
-    border-top-right-radius: $corner;
-    padding: 0.75rem;
-  }
 
   a, a:hover {
     color: #000;
-  }
-
-  &:hover{
-    box-shadow: 0 0 5px #bbb;
   }
 
   img {
@@ -105,15 +97,66 @@ footer {
     border-bottom-left-radius: $corner;
     border-top-left-radius: $corner;
   }
+
+  &:hover{
+    box-shadow: 0 0 5px #bbb;
+  }
+  
+  .header {
+    font-family: 'OpenSansBold';
+    background-color: $primary-color;
+    color: $white;
+    min-height: 35%;
+    border-top-right-radius: $corner;
+    padding: 0.5rem;
+  }
+
+  .body {
+    padding: 0.5rem;
+
+    .right {
+      color: #bbb;
+    }
+  }
 }
 
 .station-show {
   .header {
     font-family: 'OpenSansBold';
     background-color: $primary-color;
-    color: #fff;
+    color: $white;
     padding: 1rem 0.5rem;
     margin-top: -1rem;
+
+    .like {
+      font-size: 20px;
+      color: $white;
+      margin-right: 0.5rem;
+
+      &:hover, &.active {
+        color: $secondary-color;
+      }
+    }
+
+    .unlike {
+      font-size: 20px;
+      color: $white;
+      margin-right: 0.5rem;
+
+      &:hover, &.active {
+        color: $alert-color;
+      }
+    }
+  }
+  .body {
+    .row.collapse {
+      margin:0;
+      max-width: 100%;
+    }
+
+    .content {
+      padding: 1rem;
+    }
   }
 }
 
@@ -130,7 +173,7 @@ footer {
   text-align: center;
 
   a, a:hover {
-    color: #fff;
+    color: $white;
   }
 
   &:hover {

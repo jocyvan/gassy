@@ -8,4 +8,13 @@
         .large-4.medium-4.small-4.columns= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{station.latitude},#{station.longitude}&zoom=15&size=160x140&markers=#{station.latitude},#{station.longitude}"
         .large-8.medium-8.small-8.columns
           .header= station.name
-          %div= station.city
+          .body
+            .right
+              = fa_icon("comments", text: "0")
+              = fa_icon("thumbs-up", text: "#{station.rates.like.size}")
+            %div
+              %b City:
+              = station.city
+            %div
+              %b Price:
+              $ 3,099
