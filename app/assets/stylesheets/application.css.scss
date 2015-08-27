@@ -92,10 +92,11 @@ footer {
     color: #000;
   }
 
-  img {
-    z-index: -1;
+  #image-map {
     border-bottom-left-radius: $corner;
     border-top-left-radius: $corner;
+    min-height: 8.5rem;
+    background-position: center;
   }
 
   &:hover{

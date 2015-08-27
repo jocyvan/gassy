@@ -5,7 +5,7 @@
       = link_to fa_icon('pencil'), edit_station_path(station), class: 'ribbon secondary'
     = link_to station do
       .row.collapse
-        .large-4.medium-4.small-4.columns= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{station.latitude},#{station.longitude}&zoom=15&size=160x140&markers=#{station.latitude},#{station.longitude}"
+        .large-4.medium-4.small-4.columns#image-map{style: "background-image: url(https://maps.googleapis.com/maps/api/staticmap?center=#{station.latitude},#{station.longitude}&zoom=15&size=160x140&markers=#{station.latitude},#{station.longitude})"}
         .large-8.medium-8.small-8.columns
           .header= station.name
           .body
