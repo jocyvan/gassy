@@ -5,4 +5,5 @@ class Station < ActiveRecord::Base
   
   belongs_to :user
   has_many :rates
+  has_many :comments
 end

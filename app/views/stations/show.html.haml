@@ -51,3 +51,29 @@
           %b City:
           = @station.city
           #chart_div
+    .row
+      .large-3.columns
+        %br
+      .large-6.columns
+        %h5 Comments
+        %hr
+        - if @station.comments.any?
+          - @station.comments.each do |comment|
+            .comment-content
+              %b
+                - if comment.user
+                  = fa_icon('user', text: "#{comment.user_name}", title: "#{Rails.application.class.parent_name} user", class: 'primary', right: true)
+                - else
+                  = comment.name
+                = " says:"
+              = comment.content
+              %small.secondary#date= l(comment.created_at, format: :short)
+        - else
+          .text-center No comments yet
+        %p
+          = simple_form_for([@station, @comment]) do |f|
+            = f.input :name unless signed_in?
+            = f.input :content, label: 'Comment', as: :text, input_html: {rows: 4}
+            = f.submit 'Save', class: 'button tiny right'
+      .large-3.columns
+        %br

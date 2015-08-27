@@ -10,8 +10,8 @@
           .header= station.name
           .body
             .right
-              = fa_icon("comments", text: "0")
-              = fa_icon("thumbs-up", text: "#{station.rates.like.size}")
+              = fa_icon("comments", text: station.comments.size)
+              = fa_icon("thumbs-up", text: station.rates.like.size)
             %div
               %b City:
               = station.city

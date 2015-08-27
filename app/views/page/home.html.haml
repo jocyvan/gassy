@@ -9,7 +9,8 @@
     function showMap(position){
     var mapOptions = {
     center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-    zoom: 14,
+    zoom: 15,
+    minZoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 

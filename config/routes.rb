@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   resources :stations do
+    resources :comments, only: [:create, :delete]
     collection { get :my }
     member { get :like, :unlike }
   end

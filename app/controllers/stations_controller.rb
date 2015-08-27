@@ -20,6 +20,7 @@ class StationsController < ApplicationController
   def show
     @rates = @station.rates
     @my_rate = @rates.where(user: current_user).first_or_initialize
+    @comment = Comment.new(user: signed_in? ? current_user : nil)
   end
 
   # GET /stations/new
