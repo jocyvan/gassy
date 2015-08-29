@@ -13,10 +13,10 @@
       %hr{style: 'margin-top:0'}
 
       - if @stations.any?
-        %ul.large-block-grid-2.medium-block-grid-2.small-block-grid-1
+        %ul.large-block-grid-2.medium-block-grid-1.small-block-grid-1
           = render @stations
         .pagination-centered= paginate @stations
       - else
         .row
           .large-12.small-12.columns.text-center
-            No station yet
+            = params[:q] ? "No station for '#{params[:q]}'" : 'No station yet'

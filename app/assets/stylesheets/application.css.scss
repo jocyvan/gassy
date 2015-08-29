@@ -30,6 +30,7 @@ body {
 main {
   background-color: $white;
   width: 80%;
+  min-width: 500px;
   min-height: 85%;
   margin: 0 auto 2px;
   padding: 1rem 0;
@@ -110,7 +111,7 @@ footer {
   &:hover{
     box-shadow: 0 0 5px #bbb;
   }
-  
+
   .header {
     font-family: 'OpenSansBold';
     background-color: $primary-color;
@@ -170,7 +171,7 @@ footer {
 
   .comment-content {
     position: relative;
-    
+
     #date {
       position: absolute;
       bottom: 0px;

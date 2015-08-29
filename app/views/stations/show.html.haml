@@ -12,7 +12,7 @@
     google.setOnLoadCallback(drawChart);
 
 
-    // Callback that creates and populates a data table, 
+    // Callback that creates and populates a data table,
     // instantiates the pie chart, passes in the data and
     // draws it.
     function drawChart() {
@@ -39,9 +39,10 @@
     - if can? :manage, @station
       = link_to fa_icon('pencil', text: t('edit')), edit_station_path(@station), class: 'label secondary small'
       = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
-    .right
-      = link_to fa_icon('thumbs-up'), like_station_path, title: 'Like', class: "like #{'active' if @my_rate.like?}", remote: true
-      = link_to fa_icon('thumbs-down'), unlike_station_path, title: 'Unlike', class: "unlike #{'active' if @my_rate.unlike?}", remote: true
+    - if signed_in?
+      .right
+        = link_to fa_icon('thumbs-up'), like_station_path, title: 'Like', class: "like #{'active' if @my_rate.like?}", remote: true
+        = link_to fa_icon('thumbs-down'), unlike_station_path, title: 'Unlike', class: "unlike #{'active' if @my_rate.unlike?}", remote: true
   .body
     .row.collapse
       .large-6.columns
@@ -72,7 +73,7 @@
           .text-center No comments yet
         %p
           = simple_form_for([@station, @comment]) do |f|
-            = f.input :name unless signed_in?
+            = f.input :name, required: !signed_in? unless signed_in?
             = f.input :content, label: 'Comment', as: :text, input_html: {rows: 4}
             = f.submit 'Save', class: 'button tiny right'
       .large-3.columns
