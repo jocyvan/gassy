@@ -14,13 +14,36 @@
     mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
+    var fullBounds = new google.maps.LatLngBounds();    
     map = new google.maps.Map($('#map-canvas')[0] ,mapOptions);
 
-    marker = new google.maps.Marker({
+    new google.maps.Marker({
     animation: google.maps.Animation.DROP,
     position: map.getCenter(),
-    map: map
+    map: map,
+    icon: "#{image_path("marker.png")}"
     });
+
+    - Station.find_each do |station|
+      var latLng = new google.maps.LatLng("#{station.latitude}", "#{station.longitude}");
+      fullBounds.extend(latLng);
+      marker = new google.maps.Marker({
+      animation: google.maps.Animation.DROP,
+      position: latLng,
+      map: map
+      });
+      // Adiciona um evento (clique) ao marcador
+      var infowindow = new google.maps.InfoWindow({ content: '' });
+      var id = parseInt("#{station.id}");
+      google.maps.event.addListener(marker, 'click', (function(id) {
+      return function() {
+      infowindow.setContent("<b>Name: </b>#{station.name}<br/><b>Price: </b> R$ 3,199");
+      infowindow.open(map, this);
+      }
+      })(id));
+
+    map.fitBounds(fullBounds);
+
     }
 
 %h4.text-center Find a gas station
