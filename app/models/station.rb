@@ -1,4 +1,5 @@
 class Station < ActiveRecord::Base
+  is_impressionable
   paginates_per 10
 
   validates :name, :city, presence: true

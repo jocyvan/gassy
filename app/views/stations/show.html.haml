@@ -5,18 +5,12 @@
     showMap(new google.maps.LatLng("#{@station.latitude}","#{@station.longitude}"));
     });
 
-    // Load the Visualization API and the piechart package.
+    -# Pie chart
     google.load('visualization', '1', {'packages':['corechart']});
 
-    // Set a callback to run when the Google Visualization API is loaded.
     google.setOnLoadCallback(drawChart);
 
-
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
     function drawChart() {
-    // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Topping');
     data.addColumn('number', 'Slices');
@@ -25,12 +19,40 @@
     ['Unlikes', parseInt("#{@station.rates.unlike.size}")]
     ]);
 
-    // Set chart options
     var options = {'title':'Rates'};
 
-    // Instantiate and draw our chart, passing in some options.
     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
     chart.draw(data, options);
+    }
+
+    -# Columns chart
+    google.load('visualization', '1', {packages: ['corechart', 'bar']});
+    google.setOnLoadCallback(drawColColors);
+
+    function drawColColors() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Time of Day');
+    data.addColumn('number', 'Total');
+    data.addColumn('number', 'Likes');
+    data.addColumn('number', 'Unlikes');
+    data.addColumn('number', 'Comments');
+
+    data.addRows([
+    [{v: "#{Date::MONTHNAMES[Date.today.prev_month.prev_month.month]}", f: "#{Date::MONTHNAMES[Date.today.prev_month.prev_month.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_prev_2_month(:first), end_date: get_day_prev_2_month(:last))}"), parseInt("#{@station.rates.prev_2_month.like.size}"), parseInt("#{@station.rates.prev_2_month.unlike.size}"), parseInt("#{@station.comments.prev_2_month.size}")],
+    [{v: "#{Date::MONTHNAMES[Date.today.prev_month.month]}", f: "#{Date::MONTHNAMES[Date.today.prev_month.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_prev_month(:first), end_date: get_day_prev_month(:last))}"), parseInt("#{@station.rates.prev_month.like.size}"), parseInt("#{@station.rates.prev_month.unlike.size}"), parseInt("#{@station.comments.prev_month.size}")],
+    [{v: "#{Date::MONTHNAMES[Date.today.month]}", f: "#{Date::MONTHNAMES[Date.today.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_this_month(:first), end_date: get_day_this_month(:last))}"), parseInt("#{@station.rates.this_month.like.size}"), parseInt("#{@station.rates.this_month.unlike.size}"), parseInt("#{@station.comments.this_month.size}")],
+    ]);
+
+    var options = {
+    title: 'Views and interactions on this page',
+    colors: ['#333', '#33ac71', '#fa9d8d', '#9575cd'],
+    hAxis: {
+    title: 'Months'
+    }
+    };
+
+    var columnsChart = new google.visualization.ColumnChart(document.getElementById('columns_chart_div'));
+    columnsChart.draw(data, options);
     }
 
 .station-show
@@ -52,6 +74,7 @@
           %b City:
           = @station.city
           #chart_div
+          #columns_chart_div
     .row
       .large-3.columns
         %br

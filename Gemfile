@@ -28,6 +28,7 @@ gem 'simple_form', '3.1.0'
 gem 'devise', '3.5.2'
 gem 'cancancan', '1.12.0'
 gem 'kaminari', '0.16.3'
+gem 'impressionist', '1.5.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -48,4 +49,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

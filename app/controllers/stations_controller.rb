@@ -1,6 +1,8 @@
 class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy, :like, :unlike]
 
+  impressionist :actions => [:show]
+
   authorize_resource
 
   # GET /stations
