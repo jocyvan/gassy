@@ -166,6 +166,10 @@ footer {
 
     .content {
       padding: 1rem;
+
+      .label, a, a:hover {
+        color: $white;
+      }
     }
   }
 
@@ -183,8 +187,8 @@ footer {
 .ribbon {
   z-index: 9;
   position: absolute;
-  top: -0.2rem;
-  right: 0.45rem;
+  top: -0.15rem;
+  right: 0.5%;
   width: 25px;
   transition: box-shadow 0.2s;
   background: $primary-color;

@@ -1,7 +1,7 @@
 %li
   .station-card
     - if can? :manage, station
-      = link_to fa_icon('times'), station, method: :delete, class: 'ribbon alert', 'data-confirm': 'Are you sure?'
+      = link_to fa_icon('times'), station, method: :delete, class: 'ribbon alert', data: { :confirm => 'Are you sure?' }
       = link_to fa_icon('pencil'), edit_station_path(station), class: 'ribbon secondary'
     = link_to station do
       .row.collapse
@@ -15,6 +15,7 @@
             %div
               %b City:
               = station.city
-            %div
-              %b Price:
-              $ 3,099
+            - station.prices.uniq_prices.limit(2).each do |price|
+              %div
+                %b== #{price.fuel_name}:
+                = number_to_currency(price.value, precision: 3)

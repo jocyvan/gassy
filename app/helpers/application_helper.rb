@@ -22,4 +22,12 @@ module ApplicationHelper
       Date.today.at_end_of_month.prev_month.prev_month.to_s(:db)
     end
   end
+
+  def infowindow(station)
+    infowindow = "<b>Name: </b><a href='#{station_path(station)}'>#{station.name}</a><br/>"
+    station.prices.each do |price|
+      infowindow += "<b>#{price.fuel_name}: </b>#{number_to_currency(price.value, precision: 3)}<br/>"
+    end
+    infowindow
+  end
 end

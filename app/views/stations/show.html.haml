@@ -5,59 +5,59 @@
     showMap(new google.maps.LatLng("#{@station.latitude}","#{@station.longitude}"));
     });
 
-    -# Pie chart
-    google.load('visualization', '1', {'packages':['corechart']});
+    / -# Pie chart
+    / google.load('visualization', '1', {'packages':['corechart']});
 
-    google.setOnLoadCallback(drawChart);
+    / google.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
-    data.addRows([
-    ['Likes', parseInt("#{@station.rates.like.size}")],
-    ['Unlikes', parseInt("#{@station.rates.unlike.size}")]
-    ]);
+    / function drawChart() {
+    / var data = new google.visualization.DataTable();
+    / data.addColumn('string', 'Topping');
+    / data.addColumn('number', 'Slices');
+    / data.addRows([
+    / ['Likes', parseInt("#{@station.rates.like.size}")],
+    / ['Unlikes', parseInt("#{@station.rates.unlike.size}")]
+    / ]);
 
-    var options = {'title':'Rates'};
+    / var options = {'title':'Rates'};
 
-    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-    }
+    / var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    / chart.draw(data, options);
+    / }
 
-    -# Columns chart
-    google.load('visualization', '1', {packages: ['corechart', 'bar']});
-    google.setOnLoadCallback(drawColColors);
+    / -# Columns chart
+    / google.load('visualization', '1', {packages: ['corechart', 'bar']});
+    / google.setOnLoadCallback(drawColColors);
 
-    function drawColColors() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Time of Day');
-    data.addColumn('number', 'Total');
-    data.addColumn('number', 'Likes');
-    data.addColumn('number', 'Unlikes');
-    data.addColumn('number', 'Comments');
+    / function drawColColors() {
+    / var data = new google.visualization.DataTable();
+    / data.addColumn('string', 'Time of Month');
+    / data.addColumn('number', 'Views');
+    / data.addColumn('number', 'Likes');
+    / data.addColumn('number', 'Unlikes');
+    / data.addColumn('number', 'Comments');
 
-    data.addRows([
-    [{v: "#{Date::MONTHNAMES[Date.today.prev_month.prev_month.month]}", f: "#{Date::MONTHNAMES[Date.today.prev_month.prev_month.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_prev_2_month(:first), end_date: get_day_prev_2_month(:last))}"), parseInt("#{@station.rates.prev_2_month.like.size}"), parseInt("#{@station.rates.prev_2_month.unlike.size}"), parseInt("#{@station.comments.prev_2_month.size}")],
-    [{v: "#{Date::MONTHNAMES[Date.today.prev_month.month]}", f: "#{Date::MONTHNAMES[Date.today.prev_month.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_prev_month(:first), end_date: get_day_prev_month(:last))}"), parseInt("#{@station.rates.prev_month.like.size}"), parseInt("#{@station.rates.prev_month.unlike.size}"), parseInt("#{@station.comments.prev_month.size}")],
-    [{v: "#{Date::MONTHNAMES[Date.today.month]}", f: "#{Date::MONTHNAMES[Date.today.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_this_month(:first), end_date: get_day_this_month(:last))}"), parseInt("#{@station.rates.this_month.like.size}"), parseInt("#{@station.rates.this_month.unlike.size}"), parseInt("#{@station.comments.this_month.size}")],
-    ]);
+    / data.addRows([
+    / [{v: "#{Date::MONTHNAMES[Date.today.prev_month.prev_month.month]}", f: "#{Date::MONTHNAMES[Date.today.prev_month.prev_month.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_prev_2_month(:first), end_date: get_day_prev_2_month(:last))}"), parseInt("#{@station.rates.prev_2_month.like.size}"), parseInt("#{@station.rates.prev_2_month.unlike.size}"), parseInt("#{@station.comments.prev_2_month.size}")],
+    / [{v: "#{Date::MONTHNAMES[Date.today.prev_month.month]}", f: "#{Date::MONTHNAMES[Date.today.prev_month.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_prev_month(:first), end_date: get_day_prev_month(:last))}"), parseInt("#{@station.rates.prev_month.like.size}"), parseInt("#{@station.rates.prev_month.unlike.size}"), parseInt("#{@station.comments.prev_month.size}")],
+    / [{v: "#{Date::MONTHNAMES[Date.today.month]}", f: "#{Date::MONTHNAMES[Date.today.month]}"}, parseInt("#{@station.impressionist_count(filter: :session_hash, start_date: get_day_this_month(:first), end_date: get_day_this_month(:last))}"), parseInt("#{@station.rates.this_month.like.size}"), parseInt("#{@station.rates.this_month.unlike.size}"), parseInt("#{@station.comments.this_month.size}")],
+    / ]);
 
-    var options = {
-    title: 'Views and interactions on this page',
-    colors: ['#333', '#33ac71', '#fa9d8d', '#9575cd'],
-    hAxis: {
-    title: 'Months'
-    }
-    };
+    / var options = {
+    / title: 'Views and interactions on this page',
+    / colors: ['#333', '#33ac71', '#fa9d8d', '#9575cd'],
+    / hAxis: {
+    / title: 'Months'
+    / }
+    / };
 
-    var columnsChart = new google.visualization.ColumnChart(document.getElementById('columns_chart_div'));
-    columnsChart.draw(data, options);
-    }
+    / var columnsChart = new google.visualization.ColumnChart(document.getElementById('columns_chart_div'));
+    / columnsChart.draw(data, options);
+    / }
 
 .station-show
   .header
-    = @station.name
+    == #{@station.name} (#{@station.city})
     - if can? :manage, @station
       = link_to fa_icon('pencil', text: t('edit')), edit_station_path(@station), class: 'label secondary small'
       = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
@@ -71,10 +71,17 @@
         #map-canvas
       .large-6.columns
         .content
-          %b City:
-          = @station.city
-          #chart_div
-          #columns_chart_div
+          %h5
+            Fuel
+            = link_to fa_icon('plus', text: 'Add fuel'), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Price
+          %hr
+          - if @prices.any?
+            %ul.large-block-grid-3.medium-block-grid-3.small-block-grid-2
+              = render partial: 'price_card', collection: @prices.uniq_prices, as: :price, locals: {station: @station}
+          - else
+            .text-center No fuel yet
+          / #columns_chart_div
+          / #chart_div
     .row
       .large-3.columns
         %br

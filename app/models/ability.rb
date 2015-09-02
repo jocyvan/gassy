@@ -5,13 +5,23 @@ class Ability
     user ||= User.new
 
     if user.persisted?
-
       # STATIONS
       can :manage, Station do |station|
         station.user == user
       end
       can :read, Station
       cannot :list, Station
+
+      # PRICES
+      can :manage, Price do |price|
+        user == price.station.user
+      end
+
+      # RATES
+      can [:like, :unlike], Station
+
+      # FUEL
+      cannot :read, Fuel
 
       if user.admin?
         can :manage, :all

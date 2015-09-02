@@ -14,19 +14,22 @@
     mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    var fullBounds = new google.maps.LatLngBounds();    
-    map = new google.maps.Map($('#map-canvas')[0] ,mapOptions);
+    / var fullBounds = new google.maps.LatLngBounds();
+    var map = new google.maps.Map($('#map-canvas')[0] ,mapOptions);
+    var marker;
 
+    / fullBounds.extend(map.getCenter());
     new google.maps.Marker({
     animation: google.maps.Animation.DROP,
     position: map.getCenter(),
     map: map,
+    zoom: 14,
     icon: "#{image_path("marker.png")}"
     });
 
-    - Station.find_each do |station|
+    - @stations.find_each do |station|
       var latLng = new google.maps.LatLng("#{station.latitude}", "#{station.longitude}");
-      fullBounds.extend(latLng);
+      / fullBounds.extend(latLng);
       marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
       position: latLng,
@@ -37,16 +40,26 @@
       var id = parseInt("#{station.id}");
       google.maps.event.addListener(marker, 'click', (function(id) {
       return function() {
-      infowindow.setContent("<b>Name: </b>#{station.name}<br/><b>Price: </b> R$ 3,199");
+      infowindow.setContent("#{raw infowindow(station)}");
       infowindow.open(map, this);
       }
       })(id));
 
-    map.fitBounds(fullBounds);
+    / map.fitBounds(fullBounds);
 
     }
 
 %h4.text-center Find a gas station
+.row
+  .large-2.columns
+    %br
+  .large-8.madium-12.small-12.columns
+    = form_for my_stations_path, method: :get do
+      .row.collapse
+        .large-10.medium-10.small-10.columns= text_field_tag :q, nil, placeholder: 'Search', value: params[:q], style: 'margin-bottom:0'
+        .large-2.medium-2.small-2.columns= link_to fa_icon('search'), '#', class: 'button prefix', onclick: "$('form').submit();return false;"
+  .large-2.columns
+    %br
 
 -# %p= image_tag 'http://placehold.it/1050x500'
 #map-canvas

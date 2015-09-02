@@ -19,7 +19,8 @@
       = render  'layouts/footer'
 
     = yield :modal
-    #station-modal.reveal-modal.medium{:'data-reveal' => ''}
+    #medium-modal.reveal-modal.medium{:'data-reveal' => ''}
+    #small-modal.reveal-modal.small{:'data-reveal' => ''}
 
     = javascript_include_tag :application
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBiZilNtYRNKHXAOSmwmJapyNsklTyKQIk"

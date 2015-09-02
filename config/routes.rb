@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :fuels
   resources :stations do
+    resources :prices
     resources :comments, only: [:create, :delete]
     collection { get :my }
     member { get :like, :unlike }

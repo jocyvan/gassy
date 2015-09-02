@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Fuel:
+  = @price.fuel
+%p
+  %b Station:
+  = @price.station_name
+%p
+  %b Value:
+  = @price.value
+
+= link_to 'Edit', edit_station_price_path(@station, @price)
+\|
+= link_to 'Back', station_prices_path(@station)

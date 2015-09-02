@@ -1,0 +1,26 @@
+.row
+  .large-3.columns
+    %br
+  .large-6.columns
+    %h4 Listing fuels
+
+    %table{ style: 'width: 100%' }
+      %thead
+        %tr
+          %th Name
+          %th Status
+          %th Actions
+
+      %tbody
+        - @fuels.each do |fuel|
+          %tr
+            %td= fuel.name
+            %td= fuel.status
+            %td.text-center
+              = link_to fa_icon('pencil'), edit_fuel_path(fuel), data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :update, fuel
+              = link_to fa_icon('times'), fuel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    = link_to 'New Fuel', new_fuel_path, class: 'button tiny right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Fuel
+
+  .large-3.columns
+    %br

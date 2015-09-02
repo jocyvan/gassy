@@ -13,6 +13,7 @@
       %hr{style: 'margin-top:0'}
 
       - if @stations.any?
+        .text-center{style: 'margin-bottom: 1rem'}= "Filtered by '#{params[:q]}'" if !params[:q].blank?
         %ul.large-block-grid-2.medium-block-grid-1.small-block-grid-1
           = render @stations
         .pagination-centered= paginate @stations

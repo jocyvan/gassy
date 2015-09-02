@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829005609) do
+ActiveRecord::Schema.define(version: 20150830125743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20150829005609) do
 
   add_index "comments", ["station_id"], name: "index_comments_on_station_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "fuels", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"
@@ -52,6 +59,17 @@ ActiveRecord::Schema.define(version: 20150829005609) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
+  create_table "prices", force: :cascade do |t|
+    t.integer  "fuel_id"
+    t.integer  "station_id"
+    t.float    "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "prices", ["fuel_id"], name: "index_prices_on_fuel_id", using: :btree
+  add_index "prices", ["station_id"], name: "index_prices_on_station_id", using: :btree
 
   create_table "rates", force: :cascade do |t|
     t.integer  "station_id"
@@ -101,6 +119,8 @@ ActiveRecord::Schema.define(version: 20150829005609) do
 
   add_foreign_key "comments", "stations"
   add_foreign_key "comments", "users"
+  add_foreign_key "prices", "fuels"
+  add_foreign_key "prices", "stations"
   add_foreign_key "rates", "stations"
   add_foreign_key "rates", "users"
 end

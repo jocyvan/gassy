@@ -1,0 +1,25 @@
+%h1 Listing prices
+
+%table
+  %thead
+    %tr
+      %th Fuel
+      %th Station
+      %th Value
+      %th
+      %th
+      %th
+
+  %tbody
+    - @prices.each do |price|
+      %tr
+        %td= price.fuel_name
+        %td= price.station_name
+        %td= price.value
+        %td= link_to 'Show', station_price_path(@station, price)
+        %td= link_to 'Edit', edit_station_price_path(@station, price)
+        %td= link_to 'Destroy', station_price_path(@station, price), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Price', new_station_price_path

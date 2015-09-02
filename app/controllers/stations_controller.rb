@@ -20,6 +20,7 @@ class StationsController < ApplicationController
   # GET /stations/1
   # GET /stations/1.json
   def show
+    @prices = @station.prices
     @rates = @station.rates
     @my_rate = @rates.where(user: current_user).first_or_initialize
     @comment = Comment.new(user: signed_in? ? current_user : nil)
