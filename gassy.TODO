@@ -2,10 +2,14 @@
  ☐ Alter marker icon on home
  ☐ Do something when deny share location
  ☐ Validate comment form
- ☐ Create a view counter
  ☐ Check dependent destroy
+ ☐ Create the mask to value on fuel
+ ☐ Fuel validate
+ ☐ Search on home is not working
 
 Archive:
+ ✔ Problem on destroy station @done (15-09-03 22:34)
+ ✔ Create a view counter @done (15-09-03 22:34)
  ✔ Create evaluation @done (15-08-26 22:22)
  ✔ Create and config Station base @done (15-08-25 00:29)
  ✔ Validate user @done (15-08-23 19:45)

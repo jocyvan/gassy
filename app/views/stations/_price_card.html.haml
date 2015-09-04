@@ -2,7 +2,7 @@
   %div{ style: 'position: relative' }
     %ul.pricing-table
       %li.title
-        = link_to fa_icon('times'), station_price_path(station, price), method: :delete, class: 'ribbon alert', data: { :confirm => 'Are you sure?' }
+        = link_to fa_icon('times'), station_price_path(station, price), method: :delete, class: 'ribbon alert', data: { :confirm => t('are_you_sure') } if can? :destroy, price
         = price.fuel_name
       %li.price= number_to_currency(price.value, precision: 3)
       %li.description= l(price.created_at, format: :short)

@@ -82,6 +82,6 @@ class PricesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_params
-      params.require(:price).permit(:fuel_id, :station_id, :value)
+      params.require(:price).permit(:fuel_id, :station_id, :maskared_value)
     end
 end

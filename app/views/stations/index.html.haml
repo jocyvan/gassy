@@ -6,7 +6,7 @@
           .large-6.columns
             = form_for my_stations_path, method: :get, class: 'search-station' do
               .row.collapse
-                .large-8.columns= text_field_tag :q, nil, placeholder: 'Search', value: params[:q], style: 'margin-bottom:0'
+                .large-8.columns= text_field_tag :q, nil, placeholder: t('search'), value: params[:q], style: 'margin-bottom:0'
                 .large-4.columns= link_to fa_icon('search'), '#', class: 'button prefix', onclick: "$('form').submit();return false;"
           .large-6.columns
             .pagination.right= paginate @stations

@@ -70,7 +70,7 @@ class StationsController < ApplicationController
   def destroy
     @station.destroy
     respond_to do |format|
-      format.html { redirect_to stations_url, notice: 'Station was successfully destroyed.' }
+      format.html { redirect_to my_stations_url, notice: 'Station was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

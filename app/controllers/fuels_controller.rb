@@ -58,10 +58,14 @@ class FuelsController < ApplicationController
   # DELETE /fuels/1
   # DELETE /fuels/1.json
   def destroy
-    @fuel.destroy
-    respond_to do |format|
-      format.html { redirect_to fuels_url, notice: 'Fuel was successfully destroyed.' }
-      format.json { head :no_content }
+    if @fuel.prices.count == 0
+      @fuel.destroy
+      respond_to do |format|
+        format.html { redirect_to fuels_url, notice: 'Fuel was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to fuels_url, alert: 'Prices has that fuel. Just inative it.'
     end
   end
 

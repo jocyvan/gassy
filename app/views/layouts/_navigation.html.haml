@@ -11,19 +11,19 @@
       / Left Nav Section
       %ul.left
         %li.has-dropdown
-          = link_to 'Stations', '#'
+          = link_to t('stations'), '#'
           %ul.dropdown
-            %li= link_to 'My stations', my_stations_path
-            %li= link_to 'Favorites', '#'
+            %li= link_to t('my_stations'), my_stations_path
+            %li= link_to t('favorites'), '#'
       / Right Nav Section
       %ul.right
         %li.has-form= link_to t('new_station'), new_station_path, class: 'button'
         %li.has-dropdown
           = link_to current_user.name, '#'
           %ul.dropdown
-            %li= link_to 'Edit profile', edit_user_registration_path
-            %li= link_to 'Fuels', fuels_path if current_user.admin?
-            %li.active= link_to 'Logout', destroy_user_session_path, method: :delete
+            %li= link_to t('edit_profile'), edit_user_registration_path
+            %li= link_to t('fuels'), fuels_path if current_user.admin?
+            %li.active= link_to t('logout'), destroy_user_session_path, method: :delete
     - else
       %ul.right
-        %li.has-form= link_to 'Sign in', new_user_session_path, class: 'button'
+        %li.has-form= link_to t('sign_in'), new_user_session_path, class: 'button'

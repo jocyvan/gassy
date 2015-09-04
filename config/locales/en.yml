@@ -20,9 +20,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  are_you_sure: "Are you sure?"
+
   new_station: "New station"
   edit: "Edit"
   delete: "Delete"
   first: "First"
   last: "Last"
+
+  add_fuel: "Add fuel"
+  no_fuel_yet: "No fuel yet"
+  no_comments_yet: "No comments yet"
+
+  save: "Save"
+  comment: "Comment"
+  comments: "Comments"

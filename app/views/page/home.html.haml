@@ -49,14 +49,14 @@
 
     }
 
-%h4.text-center Find a gas station
+%h4.text-center= t('find_a_gas_station')
 .row
   .large-2.columns
     %br
   .large-8.madium-12.small-12.columns
     = form_for my_stations_path, method: :get do
       .row.collapse
-        .large-10.medium-10.small-10.columns= text_field_tag :q, nil, placeholder: 'Search', value: params[:q], style: 'margin-bottom:0'
+        .large-10.medium-10.small-10.columns= text_field_tag :q, nil, placeholder: t('search'), value: params[:q], style: 'margin-bottom:0'
         .large-2.medium-2.small-2.columns= link_to fa_icon('search'), '#', class: 'button prefix', onclick: "$('form').submit();return false;"
   .large-2.columns
     %br
@@ -68,12 +68,12 @@
   .large-4.columns.text-center
     = fa_icon('map-o 5x')
     %br
-    Wherever
+    = t('wherever')
   .large-4.columns.text-center
     = fa_icon('money 5x')
     %br
-    Cheapest
+    = t('cheapest')
   .large-4.columns.text-center
     = fa_icon('map-marker 5x')
     %br
-    Closer
+    = t('closer')

@@ -18,7 +18,7 @@
         %td= price.value
         %td= link_to 'Show', station_price_path(@station, price)
         %td= link_to 'Edit', edit_station_price_path(@station, price)
-        %td= link_to 'Destroy', station_price_path(@station, price), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Destroy', station_price_path(@station, price), :method => :delete, :data => { :confirm => t('are_you_sure') }
 
 %br
 

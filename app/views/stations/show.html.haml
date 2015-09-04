@@ -1,5 +1,6 @@
 = content_for :js do
   = javascript_include_tag "https://www.google.com/jsapi"
+  = javascript_include_tag "jquery.maskMoney"
   = javascript_tag do
     $(document).ready(function(){
     showMap(new google.maps.LatLng("#{@station.latitude}","#{@station.longitude}"));
@@ -55,12 +56,16 @@
     / columnsChart.draw(data, options);
     / }
 
+    $('#small-modal').on('opened.fndtn.reveal', function () {
+    $('#price_maskared_value').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false, precision: 3});
+    });
+
 .station-show
   .header
     == #{@station.name} (#{@station.city})
     - if can? :manage, @station
       = link_to fa_icon('pencil', text: t('edit')), edit_station_path(@station), class: 'label secondary small'
-      = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm': 'Are you sure?'
+      = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm': t('are_you_sure')
     - if signed_in?
       .right
         = link_to fa_icon('thumbs-up'), like_station_path, title: 'Like', class: "like #{'active' if @my_rate.like?}", remote: true
@@ -72,21 +77,21 @@
       .large-6.columns
         .content
           %h5
-            Fuel
-            = link_to fa_icon('plus', text: 'Add fuel'), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Price
+            = t('fuels')
+            = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Price
           %hr
           - if @prices.any?
-            %ul.large-block-grid-3.medium-block-grid-3.small-block-grid-2
+            %ul.large-block-grid-2.medium-block-grid-3.small-block-grid-2
               = render partial: 'price_card', collection: @prices.uniq_prices, as: :price, locals: {station: @station}
           - else
-            .text-center No fuel yet
+            .text-center= t('no_fuel_yet')
           / #columns_chart_div
           / #chart_div
     .row
       .large-3.columns
         %br
       .large-6.columns
-        %h5 Comments
+        %h5= t('comments')
         %hr
         - if @station.comments.any?
           - @station.comments.each do |comment|
@@ -100,11 +105,11 @@
               = comment.content
               %small.secondary#date= l(comment.created_at, format: :short)
         - else
-          .text-center No comments yet
+          .text-center= t('no_comments_yet')
         %p
           = simple_form_for([@station, @comment]) do |f|
             = f.input :name, required: !signed_in? unless signed_in?
-            = f.input :content, label: 'Comment', as: :text, input_html: {rows: 4}
-            = f.submit 'Save', class: 'button tiny right'
+            = f.input :content, label: t('comment'), as: :text, input_html: {rows: 4}
+            = f.submit t('save'), class: 'button tiny right'
       .large-3.columns
         %br

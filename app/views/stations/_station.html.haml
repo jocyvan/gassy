@@ -1,7 +1,7 @@
 %li
   .station-card
     - if can? :manage, station
-      = link_to fa_icon('times'), station, method: :delete, class: 'ribbon alert', data: { :confirm => 'Are you sure?' }
+      = link_to fa_icon('times'), station, method: :delete, class: 'ribbon alert', data: { :confirm => t('are_you_sure') }
       = link_to fa_icon('pencil'), edit_station_path(station), class: 'ribbon secondary'
     = link_to station do
       .row.collapse
