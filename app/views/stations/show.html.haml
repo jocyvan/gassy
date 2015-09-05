@@ -4,6 +4,15 @@
   = javascript_tag do
     $(document).ready(function(){
     showMap(new google.maps.LatLng("#{@station.latitude}","#{@station.longitude}"));
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
     });
 
     / -# Pie chart
@@ -60,6 +69,7 @@
     $('#price_maskared_value').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false, precision: 3});
     });
 
+#fb-root
 .station-show
   .header
     == #{@station.name} (#{@station.city})
@@ -75,18 +85,20 @@
       .large-6.columns
         #map-canvas
       .large-6.columns
+        .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
+        %br/
         .content
           %h5
             = t('fuels')
-            = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Price
+            = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :manage, @station
           %hr
           - if @prices.any?
             %ul.large-block-grid-2.medium-block-grid-3.small-block-grid-2
               = render partial: 'price_card', collection: @prices.uniq_prices, as: :price, locals: {station: @station}
           - else
             .text-center= t('no_fuel_yet')
-          / #columns_chart_div
           / #chart_div
+          / #columns_chart_div
     .row
       .large-3.columns
         %br
@@ -101,7 +113,7 @@
                   = fa_icon('user', text: "#{comment.user_name}", title: "#{Rails.application.class.parent_name} user", class: 'primary', right: true)
                 - else
                   = comment.name
-                = " says:"
+                = t('says')
               = comment.content
               %small.secondary#date= l(comment.created_at, format: :short)
         - else

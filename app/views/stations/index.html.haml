@@ -20,4 +20,4 @@
       - else
         .row
           .large-12.small-12.columns.text-center
-            = params[:q] ? "No station for '#{params[:q]}'" : 'No station yet'
+            = params[:q] ? t('no_station_for', q: params[:q]) : t('no_station_yet')

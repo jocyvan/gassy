@@ -11,9 +11,12 @@ pt-BR:
     error_notification:
       default_message: "Por favor, revise os problemas abaixo:"
     # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
+    labels:
+      defaults:
+        password: 'Senha'
+        remember_me: 'Lembrar'
+        name: 'Nome'
+        city: 'Cidade'
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

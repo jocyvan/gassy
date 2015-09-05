@@ -14,7 +14,7 @@ class Ability
 
       # PRICES
       can :manage, Price do |price|
-        user == price.station.user
+        user.id == price.station.user_id
       end
 
       # RATES

@@ -209,17 +209,24 @@ pt-BR:
 
   edit_profile: "Editar perfil"
   sign_in: "Entrar"
+  sign_up: "Cadastrar-se"
+  forgot_your_password: 'Esqueceu a senha?'
   logout: "Sair"
 
   stations: "Postos"
-  fuel: "Combustível"
-  fuels: "Combustíveis"
   my_stations: "Meus postos"
   new_station: "Novo posto"
+  enter_a_city: 'Digite o nome da cidade'
+  create_station: 'Criar posto'
+
+  says: " diz: "
+  fuel: "Combustível"
+  fuels: "Combustíveis"
   favorites: "Favoritos"
 
   search: "Buscar"
 
+  name: "Nome"
   edit: "Editar"
   delete: "Excluir"
   first: "Primeiro"
@@ -227,6 +234,8 @@ pt-BR:
 
   add_fuel: "Adicionar combustível"
   no_fuel_yet: "Nenhum combustível ainda"
+  no_station_yet: "Nenhum posto ainda"
+  no_station_for: "Nenhum posto encontrado para '%{q}'"
   no_comments_yet: "Nenhum comentário ainda"
 
   save: "Salvar"
@@ -238,3 +247,16 @@ pt-BR:
   wherever: "Em qual quer lugar"
   cheapest: "Mais barato"
   closer: "Mais perto"
+
+  station_successfully_created: 'Posto criado com sucesso.'
+  station_successfully_updated: 'Posto atualizado com sucesso.'
+  station_successfully_destroyed: 'Posto excluido com sucesso.'
+
+  price_successfully_created: 'Combustível criado com sucesso.'
+  price_successfully_updated: 'Combustível atualizado com sucesso.'
+  price_successfully_destroyed: 'Combustível excluido com sucesso.'
+
+  fuel_successfully_created: 'Tipo de combustível criado com sucesso.'
+  fuel_successfully_updated: 'Tipo de combustível atualizado com sucesso.'
+  fuel_successfully_destroyed: 'Tipo de combustível excluido com sucesso.'
+  fuel_has_prices: 'Já possui combustíveis com esse tipo. Apenas inative-o.'

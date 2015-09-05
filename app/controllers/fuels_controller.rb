@@ -32,7 +32,7 @@ class FuelsController < ApplicationController
 
     respond_to do |format|
       if @fuel.save
-        format.html { redirect_to fuels_url, notice: 'Fuel was successfully created.' }
+        format.html { redirect_to fuels_url, notice: t('fuel_successfully_created') }
         format.json { render :show, status: :created, location: @fuel }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class FuelsController < ApplicationController
   def update
     respond_to do |format|
       if @fuel.update(fuel_params)
-        format.html { redirect_to fuels_url, notice: 'Fuel was successfully updated.' }
+        format.html { redirect_to fuels_url, notice: t('fuel_successfully_updated') }
         format.json { render :show, status: :ok, location: @fuel }
       else
         format.html { render :edit }
@@ -61,11 +61,11 @@ class FuelsController < ApplicationController
     if @fuel.prices.count == 0
       @fuel.destroy
       respond_to do |format|
-        format.html { redirect_to fuels_url, notice: 'Fuel was successfully destroyed.' }
+        format.html { redirect_to fuels_url, notice: t('fuel_successfully_destroyed') }
         format.json { head :no_content }
       end
     else
-      redirect_to fuels_url, alert: 'Prices has that fuel. Just inative it.'
+      redirect_to fuels_url, alert: t('fuel_has_prices')
     end
   end
 

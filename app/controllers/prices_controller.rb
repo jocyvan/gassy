@@ -33,7 +33,7 @@ class PricesController < ApplicationController
 
     respond_to do |format|
       if @price.save
-        format.html { redirect_to @station, notice: 'Fuel was successfully added.' }
+        format.html { redirect_to @station, notice: t('price_successfully_created') }
         format.json { render :show, status: :created, location: @price }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class PricesController < ApplicationController
   def update
     respond_to do |format|
       if @price.update(price_params)
-        format.html { redirect_to @price, notice: 'Price was successfully updated.' }
+        format.html { redirect_to @price, notice: t('price_successfully_updated') }
         format.json { render :show, status: :ok, location: @price }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class PricesController < ApplicationController
   def destroy
     @price.destroy
     respond_to do |format|
-      format.html { redirect_to @station, notice: 'Fuel was successfully destroyed.' }
+      format.html { redirect_to @station, notice: t('price_successfully_destroyed') }
       format.json { head :no_content }
     end
   end

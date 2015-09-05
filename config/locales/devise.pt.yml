@@ -1,0 +1,60 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+pt-BR:
+  devise:
+    confirmations:
+      confirmed: "O seu endereço de e-mail foi confirmado com sucesso."
+      send_instructions: "Em poucos minutos, você receberá um e-mail com instruções sobre como confirmar o seu endereço de e-mail."
+      send_paranoid_instructions: "Se o seu endereço de e-mail existe na nossa base de dados, em poucos minutos você receberá um e-mail com instruções sobre como confirmar o seu endereço de e-mail."
+    failure:
+      already_authenticated: "Você já conectou."
+      inactive: "Sua conta ainda não foi confirmada."
+      invalid: "Senha ou %{authentication_keys} inválida."
+      locked: "Sua conta está bloqueada."
+      last_attempt: "Você tem mais uma tentativa antes de sua conta ser bloqueada."
+      not_found_in_database: "Senha ou %{authentication_keys} inválida."
+      timeout: "Sua sessão expirou. Conecte novamente para continuar."
+      unauthenticated: "Você precisa conectar ou cadastrar-se antes de continuar."
+      unconfirmed: "Você tem que confirmar o seu endereço de e-mail antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instruções de confirmação"
+      reset_password_instructions:
+        subject: "Instruções de redefinição de senha"
+      unlock_instructions:
+        subject: "Instruções de desbloqueio"
+    omniauth_callbacks:
+      failure: "Não pode conectar com %{kind} por que \"%{reason}\"."
+      success: "Conectou coma conta %{kind}."
+    passwords:
+      no_token: "Você so pode acessar essa página a partir de um e-mail de restauração de senha."
+      send_instructions: "Em alguns minutos, você receberá um e-mail com as instruções."
+      send_paranoid_instructions: "Se o seu endereço de e-mail existe na nossa base de dados, em poucos minutos você receberá um link de recuperação de senha para o seu endereço de e-mail."
+      updated: "Sua senha foi alterada com sucesso. Você agora está conectado."
+      updated_not_active: "Sua senha foi alterada com sucesso."
+    registrations:
+      destroyed: "Tchau! Sua conta foi cancelada com sucesso. Nós esperamos vê-lo novamente em breve."
+      signed_up: "Bem-vindo! Você cadastrou-se com êxito."
+      signed_up_but_inactive: "Você cadastrar-se com êxito. No entanto, não foi possível conectar você porque a sua conta ainda não está ativada."
+      signed_up_but_locked: "Você se inscreveu com êxito. No entanto, não foi possível conectar você porque sua conta está bloqueada."
+      signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviado para seu endereço de e-mail. Por favor, use o link para ativar sua conta."
+      update_needs_confirmation: "Você atualizou sua conta com êxito, mas precisamos verificar o seu novo endereço de e-mail. Por favor, verifique seu e-mail e clique no link de confirmação para confirmar o seu novo endereço de e-mail."
+      updated: "Sua conta foi atualizada com sucesso."
+    sessions:
+      signed_in: "Conectado com êxito."
+      signed_out: "Desconectado com êxito."
+      already_signed_out: "Desconectado com êxito."
+    unlocks:
+      send_instructions: "Em poucos minutos você receberá um e-mail com instruções sobre como desbloquear a sua conta."
+      send_paranoid_instructions: "Se a sua conta existe, em poucos minutos você receberá um e-mail com instruções sobre como desbloqueá-lo."
+      unlocked: "Sua conta foi desbloqueado com sucesso. Conecte-se para continuar."
+  errors:
+    messages:
+      already_confirmed: "já foi confirmado, por favor, tente entrar"
+      confirmation_period_expired: "precisa ser confirmado em %{period}, solicite um novo"
+      expired: "expirado, solicite um novo"
+      not_found: "nao encontrado"
+      not_locked: "não foi bloqueado"
+      not_saved:
+        one: "1 erro proibiu %{resource} de ser salvo:"
+        other: "%{count} erros proibiram %{resource} de ser salvo:"

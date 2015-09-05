@@ -42,7 +42,7 @@ class StationsController < ApplicationController
 
     respond_to do |format|
       if @station.save
-        format.html { redirect_to @station, notice: 'Station was successfully created.' }
+        format.html { redirect_to @station, notice: t('station_successfully_created') }
         format.json { render :show, status: :created, location: @station }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class StationsController < ApplicationController
   def update
     respond_to do |format|
       if @station.update(station_params)
-        format.html { redirect_to @station, notice: 'Station was successfully updated.' }
+        format.html { redirect_to @station, notice: t('station_successfully_updated') }
         format.json { render :show, status: :ok, location: @station }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class StationsController < ApplicationController
   def destroy
     @station.destroy
     respond_to do |format|
-      format.html { redirect_to my_stations_url, notice: 'Station was successfully destroyed.' }
+      format.html { redirect_to my_stations_url, notice: t('station_successfully_destroyed') }
       format.json { head :no_content }
     end
   end

@@ -22,6 +22,7 @@
 en:
   are_you_sure: "Are you sure?"
 
+  name: "Name"
   new_station: "New station"
   edit: "Edit"
   delete: "Delete"
