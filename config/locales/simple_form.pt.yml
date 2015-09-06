@@ -17,6 +17,8 @@ pt-BR:
         remember_me: 'Lembrar'
         name: 'Nome'
         city: 'Cidade'
+        password_confirmation: 'Confirmar senha'
+        current_password: 'Senha atual'
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

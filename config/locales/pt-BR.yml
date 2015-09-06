@@ -208,16 +208,23 @@ pt-BR:
   are_you_sure: "Tem certeza?"
 
   edit_profile: "Editar perfil"
+  editing_profile: "Editando perfil"
   sign_in: "Entrar"
   sign_up: "Cadastrar-se"
   forgot_your_password: 'Esqueceu a senha?'
+  unhappy: 'Insatisfeito?'
+  cancel_your_account: 'Cancele sua conta'
+  leave_it_blank: 'Deixe-o em branco se não pretende altera-lo'
+  we_need_your_current_password: 'Preencha com sua senha para efetuar qual quer alteração'
   logout: "Sair"
 
   stations: "Postos"
   my_stations: "Meus postos"
   new_station: "Novo posto"
+  editing_station: "Editando posto"
   enter_a_city: 'Digite o nome da cidade'
   create_station: 'Criar posto'
+  save_station: 'Salvar posto'
 
   says: " diz: "
   fuel: "Combustível"
@@ -230,7 +237,10 @@ pt-BR:
   edit: "Editar"
   delete: "Excluir"
   first: "Primeiro"
+  next: "Próximo"
+  previous: "Anterior"
   last: "Último"
+  back: "Voltar"
 
   add_fuel: "Adicionar combustível"
   no_fuel_yet: "Nenhum combustível ainda"

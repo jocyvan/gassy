@@ -65,15 +65,13 @@
 #map-canvas
 
 .row
-  .large-4.columns.text-center
-    = fa_icon('map-o 5x')
-    %br
-    = t('wherever')
-  .large-4.columns.text-center
-    = fa_icon('money 5x')
-    %br
-    = t('cheapest')
-  .large-4.columns.text-center
-    = fa_icon('map-marker 5x')
-    %br
-    = t('closer')
+  .large-12.columns
+    - if @stations.any?
+      .text-center{style: 'margin-bottom: 1rem'}= "Filtered by '#{params[:q]}'" if !params[:q].blank?
+      %ul.large-block-grid-2.medium-block-grid-1.small-block-grid-1
+        = render @stations
+      .pagination-centered= paginate @stations
+    - else
+      .row
+        .large-12.small-12.columns.text-center
+          = params[:q] ? t('no_station_for', q: params[:q]) : t('no_station_yet')

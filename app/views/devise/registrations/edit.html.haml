@@ -3,7 +3,7 @@
     %br
   .large-6.columns
     .authform
-      %h4 Edit #{resource_name.to_s.humanize}
+      %h4= t('editing_profile')
       %hr
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f|
         = f.input :name
@@ -11,11 +11,12 @@
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %p
             Currently waiting confirmation for: #{resource.unconfirmed_email}
-        = f.input :password, autocomplete: "off", hint: "Leave it blank if you don't want to change it"
+        = f.input :password, autocomplete: "off", hint: t('leave_it_blank')
         = f.input :password_confirmation
-        = f.input :current_password, hint: "We need your current password to confirm your changes"
-        = f.button :submit, "Update", class: 'right small'
+        = f.input :current_password, hint: t('we_need_your_current_password')
+        = f.button :submit, t('helpers.submit.update', model: 'perfil'), class: 'right tiny'
 
-    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+    = t('unhappy')
+    = link_to t('cancel_your_account'), registration_path(resource_name), data: { confirm: t('are_you_sure') }, method: :delete
   .large-3.columns
     %br
