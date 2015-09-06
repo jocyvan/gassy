@@ -23,6 +23,10 @@
   color: $secondary-color;
 }
 
+.info {
+  color: $info-color;
+}
+
 body {
   background-color: #eee;
 }
@@ -165,7 +169,7 @@ footer {
     }
 
     .content {
-      padding: 1rem;
+      padding: 0 1rem;
 
       .label, a, a:hover {
         color: $white;

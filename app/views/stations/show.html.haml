@@ -87,9 +87,10 @@
       .large-6.columns
         #map-canvas
       .large-6.columns
-        .label.secondary= pluralize(@station.follows.size, t('follower'), t('followers'))
-        .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
         .content
+          .label.info= pluralize(@station.rates.likes.size, t('like'), t('like'))
+          .label.secondary= pluralize(@station.follows.size, t('follower'), t('followers'))
+          .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
           %h5
             = t('fuels')
             = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :manage, @station
