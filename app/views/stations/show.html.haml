@@ -78,6 +78,8 @@
       = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm': t('are_you_sure')
     - if signed_in?
       .right
+        = link_to current_user.followed_stations.include?(@station) ? t('unfollow') : t('follow'), follow_station_path(@station), id: 'follow-button', class: 'button tiny secondary', style: 'margin-top: -10px', remote: true
+      .right
         = link_to fa_icon('thumbs-up'), like_station_path, title: 'Like', class: "like #{'active' if @my_rate.like?}", remote: true
         = link_to fa_icon('thumbs-down'), unlike_station_path, title: 'Unlike', class: "unlike #{'active' if @my_rate.unlike?}", remote: true
   .body

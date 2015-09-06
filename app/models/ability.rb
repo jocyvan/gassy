@@ -18,7 +18,7 @@ class Ability
       end
 
       # RATES
-      can [:like, :unlike], Station
+      can [:like, :unlike, :follow], Station
 
       # FUEL
       cannot :read, Fuel

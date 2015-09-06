@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830125743) do
+ActiveRecord::Schema.define(version: 20150906205814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20150830125743) do
 
   add_index "comments", ["station_id"], name: "index_comments_on_station_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "station_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "follows", ["station_id"], name: "index_follows_on_station_id", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "fuels", force: :cascade do |t|
     t.string   "name"
@@ -119,6 +129,8 @@ ActiveRecord::Schema.define(version: 20150830125743) do
 
   add_foreign_key "comments", "stations"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "stations"
+  add_foreign_key "follows", "users"
   add_foreign_key "prices", "fuels"
   add_foreign_key "prices", "stations"
   add_foreign_key "rates", "stations"

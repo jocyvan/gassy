@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :like, :unlike, :follow]
 
   impressionist :actions => [:show]
 
@@ -95,6 +95,30 @@ class StationsController < ApplicationController
     end
 
     render :rate_status
+  end
+
+  def favorites
+    @stations = current_user.followed_stations.page(params[:page])
+
+    render :index
+  end
+
+  def follow
+    if current_user.followed_stations.include?(@station)
+      follow = current_user.follows.where(station_id: @station.id)
+      if follow.destroy_all
+        @followed = false
+      else
+        @followed = true
+      end
+    else
+      follow = Follow.new(user: current_user, station: @station)
+      if follow.save
+        @followed = true
+      else
+        @followed = false
+      end
+    end
   end
 
   private

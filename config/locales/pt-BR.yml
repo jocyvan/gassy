@@ -225,6 +225,8 @@ pt-BR:
   enter_a_city: 'Digite o nome da cidade'
   create_station: 'Criar posto'
   save_station: 'Salvar posto'
+  follow: 'Seguir'
+  unfollow: 'Seguindo (desfazer)'
 
   says: " diz: "
   fuel: "Combustível"

@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   has_many :stations
   has_many :comments
+  has_many :follows, dependent: :destroy
+  has_many :followed_stations, through: :follows, source: :station
 
   protected
 

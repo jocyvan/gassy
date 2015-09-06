@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :stations do
     resources :prices
     resources :comments, only: [:create, :delete]
-    collection { get :my }
-    member { get :like, :unlike }
+    collection { get :my, :favorites }
+    member { get :like, :unlike, :follow }
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
