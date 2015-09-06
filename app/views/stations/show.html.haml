@@ -87,8 +87,8 @@
       .large-6.columns
         #map-canvas
       .large-6.columns
+        .label.secondary= pluralize(@station.follows.size, t('follower'), t('followers'))
         .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
-        %br/
         .content
           %h5
             = t('fuels')

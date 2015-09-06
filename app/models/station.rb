@@ -9,4 +9,5 @@ class Station < ActiveRecord::Base
   has_many :rates, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :follows, dependent: :destroy
+  has_many :followers, through: :follows, source: :user
 end

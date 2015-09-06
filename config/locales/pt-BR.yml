@@ -225,6 +225,8 @@ pt-BR:
   enter_a_city: 'Digite o nome da cidade'
   create_station: 'Criar posto'
   save_station: 'Salvar posto'
+  follower: 'Seguidor'
+  followers: 'Seguidores'
   follow: 'Seguir'
   unfollow: 'Seguindo (desfazer)'
 
