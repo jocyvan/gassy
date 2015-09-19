@@ -215,6 +215,7 @@ pt-BR:
   unhappy: 'Insatisfeito?'
   cancel_your_account: 'Cancele sua conta'
   leave_it_blank: 'Deixe-o em branco se não pretende altera-lo'
+  minimum_characters: 'No mínimo %{number} caracteres'
   we_need_your_current_password: 'Preencha com sua senha para efetuar qual quer alteração'
   logout: "Sair"
 

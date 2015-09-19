@@ -3,13 +3,13 @@
     %br
   .large-6.columns
     .authform
-      %h4 Sign up
+      %h4= t('sign_up')
       %hr
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = f.input :name, autofocus: true
         = f.input :email
-        = f.input :password, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+        = f.input :password, hint: (t('minimum_characters', number: @minimum_password_length) if @minimum_password_length)
         = f.input :password_confirmation
-        = f.button :submit, "Sign up", class: 'small right'
+        = f.button :submit, t('save'), class: 'small right'
   .large-6.columns
     %br

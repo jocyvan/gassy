@@ -74,4 +74,4 @@
     - else
       .row
         .large-12.small-12.columns.text-center
-          = params[:q] ? t('no_station_for', q: params[:q]) : t('no_station_yet')
+          = t('no_station_for', q: params[:q]) if params[:q]
