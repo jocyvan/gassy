@@ -1,5 +1,5 @@
 class PageController < ApplicationController
   def home
-    @stations = Station.all.includes(:prices).page(params[:page])
+    @stations = Station.all.includes(:prices).where("name ILIKE ?", "%#{params[:q]}%").page(params[:page])
   end
 end
