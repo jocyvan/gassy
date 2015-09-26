@@ -2,14 +2,16 @@
   .large-3.columns
     %br
   .large-6.columns
-    %h4 Listing fuels
+    %h4
+      = t('listing_fuels')
+      = link_to t('new_fuel'), new_fuel_path, class: 'button tiny right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Fuel
 
     %table{ style: 'width: 100%' }
       %thead
         %tr
-          %th Name
-          %th Status
-          %th Actions
+          %th= t('name')
+          %th= t('status')
+          %th= t('actions')
 
       %tbody
         - @fuels.each do |fuel|
@@ -19,8 +21,9 @@
             %td.text-center
               = link_to fa_icon('pencil'), edit_fuel_path(fuel), data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :update, fuel
               = link_to fa_icon('times'), fuel, :method => :delete, :data => { :confirm => t('are_you_sure') }
+    - if @fuels.empty?
+      .text-center= t('no_fuel_yet')
 
-    = link_to 'New Fuel', new_fuel_path, class: 'button tiny right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Fuel
 
   .large-3.columns
     %br

@@ -248,6 +248,15 @@ pt-BR:
   last: "Último"
   back: "Voltar"
 
+  actions: "Ações"
+
+  new_price: "Novo combustível"
+  create_price: "Criar combustível"
+
+  filtered_by: "Buscando por '%{q}'"
+  listing_fuels: "Tipos de combustíveis"
+  new_fuel: "Novo tipo"
+  edit_fuel: "Editando tipo"
   add_fuel: "Adicionar combustível"
   no_fuel_yet: "Nenhum combustível ainda"
   no_station_yet: "Nenhum posto ainda"

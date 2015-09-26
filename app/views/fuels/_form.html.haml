@@ -4,4 +4,4 @@
     = f.input :status, as: :select, collection: [:active, :inactive], selected: :active
 
   .form-actions
-    = f.button :submit, class: 'tiny right'
+    = f.submit t('helpers.submit.submit', model: 'tipo'), class: 'tiny right button'
