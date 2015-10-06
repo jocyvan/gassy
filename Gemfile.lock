@@ -183,6 +183,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.6.0)
+    shoulda-matchers (3.0.0)
+      activesupport (>= 4.0.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -236,6 +238,7 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers (~> 3.0)
   simple_form (= 3.1.0)
   spring
   therubyracer (~> 0.12.2)

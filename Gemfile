@@ -54,5 +54,6 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'shoulda-matchers', '~> 3.0'
   gem 'database_cleaner', '~> 1.5.0'
 end
