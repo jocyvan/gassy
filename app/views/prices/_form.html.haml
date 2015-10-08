@@ -1,6 +1,6 @@
-= simple_form_for([@station, @price]) do |f|
+= simple_form_for([station, price]) do |f|
   .form-inputs
-    = f.association :fuel, collection: @fuels, selected: @fuels.first
+    = f.association :fuel, collection: fuels, selected: fuels.first
     = f.input :maskared_value, as: :string
 
   .form-actions

@@ -14,7 +14,7 @@ class Ability
 
       # PRICES
       can :manage, Price do |price|
-        user.id == price.station.user_id
+        user.id == price.station_user_id
       end
 
       # RATES
@@ -29,7 +29,7 @@ class Ability
     else
       can :read, Station
     end
-    #
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

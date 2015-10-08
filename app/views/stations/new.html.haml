@@ -1,10 +1,6 @@
 .row
-  .large-2.columns
-    %br
-  .large-8.columns
+  .large-8.large-centered.columns
     .stationform
       %h4= t('new_station')
       %hr
-      = render 'form'
-  .large-2.columns
-    %br
+      = render 'form', station: @station

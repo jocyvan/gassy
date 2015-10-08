@@ -9,7 +9,7 @@ class CreateStations < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    
+
     add_index :stations, :user_id
   end
 end

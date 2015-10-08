@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require foundation
 
-$(function(){ $(document).foundation(); });
-
 function autocompleteCity(objeto, position) {
   if (typeof position === 'undefined') { position = new google.maps.LatLng(0, 0); }
 
@@ -70,3 +68,5 @@ function showMap(position, showMarker){
 
   return map;
 }
+
+$(function(){ $(document).foundation(); });

@@ -1,7 +1,7 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:show, :edit, :update, :destroy]
   before_filter :set_station
-  before_filter :load_fuels, only: [:new, :edit]
+  before_filter :load_fuels, only: [:new, :create, :edit, :update]
 
   authorize_resource
 
@@ -77,7 +77,7 @@ class PricesController < ApplicationController
     end
 
     def load_fuels
-      @fuels = Fuel.all
+      @fuels = Fuel.order(:name)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

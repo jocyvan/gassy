@@ -8,7 +8,7 @@ class StationsController < ApplicationController
   # GET /stations
   # GET /stations.json
   def index
-    @stations = Station.all.page(params[:page])
+    @stations = Station.page(params[:page])
     authorize! :list, Station
   end
 
