@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe Station, :type => :model do
-  subject { FactoryGirl.create(:starion) }
+  subject { FactoryGirl.create(:station) }
 
   # it { should have_db_index(:id) }
   it { should validate_presence_of(:name) }

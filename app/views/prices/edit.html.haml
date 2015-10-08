@@ -1,5 +1,6 @@
-%h1 Editing price
+%h4= t("edit_price")
+%hr
 
-= render 'form'
+= render 'form', station: @station, price: @price, fuels: @fuels
 
 = link_to 'Back', :back

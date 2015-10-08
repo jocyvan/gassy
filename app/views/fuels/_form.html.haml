@@ -1,4 +1,4 @@
-= simple_form_for(@fuel) do |f|
+= simple_form_for(fuel) do |f|
   .form-inputs
     = f.input :name
     = f.input :status, as: :select, collection: [:active, :inactive], selected: :active

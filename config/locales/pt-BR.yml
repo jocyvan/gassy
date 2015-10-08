@@ -9,7 +9,7 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
-    - 
+    -
     - Jan
     - Fev
     - Mar
@@ -35,7 +35,7 @@ pt-BR:
       long: "%d de %B de %Y"
       short: "%d de %B"
     month_names:
-    - 
+    -
     - Janeiro
     - Fevereiro
     - Março
@@ -214,7 +214,7 @@ pt-BR:
   forgot_your_password: 'Esqueceu a senha?'
   unhappy: 'Insatisfeito?'
   cancel_your_account: 'Cancele sua conta'
-  leave_it_blank: 'Deixe-o em branco se não pretende altera-lo'
+  leave_it_blank: 'Deixe-o em branco se não pretende alterá-lo'
   minimum_characters: 'No mínimo %{number} caracteres'
   we_need_your_current_password: 'Preencha com sua senha para efetuar qual quer alteração'
   logout: "Sair"
@@ -251,6 +251,7 @@ pt-BR:
   actions: "Ações"
 
   new_price: "Novo combustível"
+  edit_price: "Editando combustível"
   create_price: "Criar combustível"
 
   filtered_by: "Buscando por '%{q}'"
