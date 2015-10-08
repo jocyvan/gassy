@@ -88,7 +88,7 @@
         #map-canvas
       .large-6.columns
         .content
-          .label.info= pluralize(@station.rates.likes.size, t('like'), t('like'))
+          .label.info= pluralize(@station.rates.like.size, t('like'), t('like'))
           .label.secondary= pluralize(@station.follows.size, t('follower'), t('followers'))
           .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
           %h5
