@@ -13,7 +13,7 @@ class StationsController < ApplicationController
   end
 
   def my
-    @stations = current_user.stations.where("name ILIKE ?", "%#{params[:q]}%").page(params[:page])
+    @stations = current_user.stations.where("name LIKE ?", "%#{params[:q]}%").page(params[:page])
     render :index
   end
 
@@ -98,7 +98,7 @@ class StationsController < ApplicationController
   end
 
   def favorites
-    @stations = current_user.followed_stations.where("name ILIKE ?", "%#{params[:q]}%").page(params[:page])
+    @stations = current_user.followed_stations.where("name LIKE ?", "%#{params[:q]}%").page(params[:page])
 
     render :index
   end
