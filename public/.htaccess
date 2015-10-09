@@ -1,0 +1,13 @@
+PassengerRuby /usr/local/ruby20/bin/ruby
+PassengerLoadShellEnvVars On
+PassengerEnabled On
+PassengerAppRoot /home/gassy/rails_apps/gassy/current
+RackEnv production
+
+# gzip html, css and js
+AddOutputFilterByType DEFLATE text/html text/css application/x-javascript application/javascript
+
+# far future expires headers
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+  ExpiresDefault "access plus 10 years"
+</FilesMatch>

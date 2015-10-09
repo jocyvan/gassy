@@ -15,11 +15,11 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   host: localhost
-  username: postgres
-  password: postgres
-  encoding: UTF8
+  username: root
+  password:
+  encoding: utf8mb4
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: gassy_production
-  username: gassy
+  database: <%= ENV['GASSY_DATABASE_DB'] %>
+  username: <%= ENV['GASSY_DATABASE_USER'] %>
   password: <%= ENV['GASSY_DATABASE_PASSWORD'] %>

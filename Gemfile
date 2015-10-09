@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
-gem 'pg', '0.18.2'
+# gem 'pg', '0.18.2'
+gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -42,6 +43,10 @@ gem 'impressionist', '1.5.1'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Use Capistrano for deployment
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
