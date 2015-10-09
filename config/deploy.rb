@@ -6,8 +6,6 @@ set :user, 'gassy'
 
 set :repo_url, 'git@github.com:jocyvan/gassy.git'
 
-set :use_sudo, false
-
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -41,7 +39,7 @@ set :format, :pretty
 # set :keep_releases, 5
 
 
-set :default_environment, {
+set :default_env, {
   'GIT_SSL_NO_VERIFY' => "true",
   'GEM_HOME'          => "/home/#{fetch(:user)}/ruby/gems",
   'GEM_PATH'          => "/home/#{fetch(:user)}/ruby/gems:/usr/local/ruby20/lib64/ruby/gems"
