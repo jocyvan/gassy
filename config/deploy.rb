@@ -2,6 +2,7 @@
 lock '3.4.0'
 
 set :application, 'gassy'
+set :user, 'gassy'
 
 set :repo_url, 'git@github.com:jocyvan/gassy.git'
 
@@ -11,9 +12,9 @@ set :use_sudo, false
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/#{user}/rails_apps/#{application}"          # Where on the server your app will be deployed
+set :deploy_to, "/home/#{fetch(:user)}/rails_apps/#{fetch(:application)}"          # Where on the server your app will be deployed
 # set :deploy_via, :copy
-set :tmp_dir, '/home/#{user}/rails_apps/#{application}/tmp'
+set :tmp_dir, "/home/#{fetch(:user)}/rails_apps/#{fetch(:application)}/tmp"
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -42,12 +43,12 @@ set :format, :pretty
 
 set :default_environment, {
   'GIT_SSL_NO_VERIFY' => "true",
-  'GEM_HOME'          => "/home/#{user}/ruby/gems",
-  'GEM_PATH'          => "/home/#{user}/ruby/gems:/usr/local/ruby20/lib64/ruby/gems"
+  'GEM_HOME'          => "/home/#{fetch(:user)}/ruby/gems",
+  'GEM_PATH'          => "/home/#{fetch(:user)}/ruby/gems:/usr/local/ruby20/lib64/ruby/gems"
 }
 
 # Bundler
-set :bundle_dir, "/home/#{user}/rails_apps/#{application}/shared/bundle"
+set :bundle_dir, "/home/#{fetch(:user)}/rails_apps/#{fetch(:application)}/shared/bundle"
 set :bundle_flags, "--deployment"
 
 
@@ -61,15 +62,19 @@ namespace :deploy do
   #   end
   # end
 
-  task :start, roles: :app do
-    run "rm -rf /home/#{user}/public_html; ln -s #{current_path}/public /home/#{user}/public_html"
-    run "cd #{shared_path}; mkdir files"
-    run "ln -nfs #{shared_path}/files #{current_path}/public/files"
-    run "touch #{current_path}/tmp/restart.txt"
+  task :start do
+    on roles(:app) do
+      execute "rm -rf /home/#{fetch(:user)}/public_html; ln -s #{current_path}/public /home/#{fetch(:user)}/public_html"
+      execute "cd #{shared_path}; mkdir files"
+      execute "ln -nfs #{shared_path}/files #{current_path}/public/files"
+      execute "touch #{current_path}/tmp/restart.txt"
+    end
   end
 
-  task :restart, roles: :app do
-    run "ln -nfs #{shared_path}/files #{current_path}/public/files"
-    run "touch #{current_path}/tmp/restart.txt"
+  task :restart do
+    on roles(:app) do
+      execute "ln -nfs #{shared_path}/files #{current_path}/public/files"
+      execute "touch #{current_path}/tmp/restart.txt"
+    end
   end
 end

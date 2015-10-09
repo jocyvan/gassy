@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.2', platforms: :ruby
+gem 'therubyracer', '0.11.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.0.4'
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails-i18n', '~> 4.0.0'
-gem 'haml-rails', '~> 0.9'
+gem 'hamlit-rails', '0.1.0'
 gem 'foundation-rails', '5.5.2.1'
 gem 'font-awesome-rails', '4.4.0'
 gem 'simple_form', '3.1.0'
