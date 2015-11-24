@@ -1,0 +1,4 @@
+= simple_form_for([station, comment]) do |f|
+  = f.input :name, required: true unless signed_in?
+  = f.input :content, label: t('comment'), as: :text, input_html: {rows: 4}
+  = f.submit t('save'), class: 'button tiny right'

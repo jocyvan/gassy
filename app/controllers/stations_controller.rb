@@ -3,13 +3,13 @@ class StationsController < ApplicationController
 
   impressionist :actions => [:show]
 
-  authorize_resource
+  load_and_authorize_resource
+  skip_load_resource only: :index
 
   # GET /stations
   # GET /stations.json
   def index
     @stations = Station.page(params[:page])
-    authorize! :list, Station
   end
 
   def my

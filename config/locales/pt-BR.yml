@@ -216,7 +216,7 @@ pt-BR:
   cancel_your_account: 'Cancele sua conta'
   leave_it_blank: 'Deixe-o em branco se não pretende alterá-lo'
   minimum_characters: 'No mínimo %{number} caracteres'
-  we_need_your_current_password: 'Preencha com sua senha para efetuar qual quer alteração'
+  we_need_your_current_password: 'Preencha com sua senha para efetuar qualquer alteração'
   logout: "Sair"
 
   stations: "Postos"
@@ -270,7 +270,7 @@ pt-BR:
 
   find_a_gas_station: "Encontre o posto mais perto"
 
-  wherever: "Em qual quer lugar"
+  wherever: "Em qualquer lugar"
   cheapest: "Mais barato"
   closer: "Mais perto"
 

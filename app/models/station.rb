@@ -5,9 +5,12 @@ class Station < ActiveRecord::Base
   validates :name, :city, presence: true
 
   belongs_to :user
-  has_many :prices, dependent: :destroy
+
   has_many :rates, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
+
+  has_many :prices, dependent: :destroy
+  has_many :fuels, through: :prices
 end
