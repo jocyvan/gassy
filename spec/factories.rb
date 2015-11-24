@@ -20,6 +20,26 @@ FactoryGirl.define do
     longitude -10.4387323
   end
 
+  factory :fuel_gasoline, class: Fuel do
+    name "Gasoline"
+    status :active
+
+    factory :fuel_diesel do
+      name "Diesel"
+    end
+  end
+
+  factory :price_gasoline, class: Price do
+    association :fuel, :factory => :fuel_gasoline
+    station
+    value 3.2
+
+    factory :price_diesel do
+      fuel_diesel
+      value 2.8
+    end
+  end
+
   factory :comment do
     name "Unkown"
     station

@@ -3,18 +3,7 @@ class PricesController < ApplicationController
   before_filter :set_station
   before_filter :load_fuels, only: [:new, :create, :edit, :update]
 
-  authorize_resource
-
-  # GET /prices
-  # GET /prices.json
-  def index
-    @prices = Price.all
-  end
-
-  # GET /prices/1
-  # GET /prices/1.json
-  def show
-  end
+  load_and_authorize_resource
 
   # GET /prices/new
   def new

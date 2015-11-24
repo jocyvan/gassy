@@ -4,6 +4,7 @@ class StationsController < ApplicationController
   impressionist :actions => [:show]
 
   load_and_authorize_resource
+  skip_load_resource only: :index
 
   # GET /stations
   # GET /stations.json

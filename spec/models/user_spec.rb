@@ -1,9 +1,9 @@
 require "spec_helper"
 
-RSpec.describe User, :type => :model do
+describe User do
   subject { FactoryGirl.build(:user) }
 
-  it { should define_enum_for (:role) }
+  it { should define_enum_for(:role) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:email) }
@@ -20,9 +20,9 @@ RSpec.describe User, :type => :model do
   it { should have_many(:followed_stations) }
 
   it "should clear user from stations before destroy" do
-    station = FactoryGirl.create(:station, id: 1, user: subject)
+    station = FactoryGirl.create(:station, user: subject)
     subject.destroy
     station.reload
-    expect(station.user).to be_nil
+    expect(station.user).to be nil
   end
 end
