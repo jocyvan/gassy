@@ -5,30 +5,23 @@ class Ability
     user ||= User.new
 
     if user.persisted?
-      # STATIONS
-      can :manage, Station do |station|
-        station.user == user
-      end
-      can :read, Station
-      cannot :list, Station
-
-      # PRICES
-      can :manage, Price do |price|
-        user.id == price.station_user_id
-      end
-
-      # RATES
-      can [:like, :unlike, :follow], Station
-
-      # FUEL
-      cannot :read, Fuel
-
       if user.admin?
         can :manage, :all
+      else
+        can [:show, :update], User, id: user.id
+
+        # STATIONS
+        can :manage, Station, user_id: user.id
+        cannot :index, Station
+
+        # PRICES
+        can :manage, Price, station_user_id: user.id
+
+        # RATES
+        can [:like, :unlike, :follow], Station
       end
-    else
-      can :read, Station
     end
+    can :show, Station
 
     # The first argument to `can` is the action you are giving the user
     # permission to do.

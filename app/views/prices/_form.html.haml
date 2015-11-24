@@ -1,7 +1,7 @@
 = simple_form_for([station, price]) do |f|
   .form-inputs
     = f.association :fuel, collection: fuels, selected: fuels.first
-    = f.input :maskared_value, as: :string
+    = f.input :masked_value, as: :string
 
   .form-actions
     = f.submit t('helpers.submit.submit', model: 'combustível'), class: 'tiny right button'

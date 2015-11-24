@@ -57,15 +57,16 @@
     -# }
     -#
     -# $('#small-modal').on('opened.fndtn.reveal', function () {
-    -# $('#price_maskared_value').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false, precision: 3});
+    -# $('#price_masked_value').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false, precision: 3});
     -# });
 
 #fb-root
 .station-show
   .header
     == #{@station.name} (#{@station.city})
-    - if can? :manage, @station
+    - if can? :update, @station
       = link_to fa_icon('pencil', text: t('edit')), edit_station_path(@station), class: 'label secondary small'
+    - if can? :destroy, @station
       = link_to fa_icon('times', text: t('delete')), @station, method: :delete, class: 'label alert small', 'data-confirm' => t('are_you_sure')
     - if signed_in?
       .right
@@ -82,9 +83,11 @@
           .label.info= pluralize(@station.rates.like.size, t('like'), t('like'))
           .label.secondary= pluralize(@station.follows.size, t('follower'), t('followers'))
           .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
+          %br/
+          %br/
           %h5
             = t('fuels')
-            = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :manage, @station
+            = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :update, @station
           %hr
           - if @prices.any?
             %ul.large-block-grid-2.medium-block-grid-3.small-block-grid-2
@@ -112,10 +115,7 @@
               %small.secondary#date= l(comment.created_at, format: :short)
         - else
           .text-center= t('no_comments_yet')
-        %p
-          = simple_form_for([@station, @comment]) do |f|
-            = f.input :name, required: !signed_in? unless signed_in?
-            = f.input :content, label: t('comment'), as: :text, input_html: {rows: 4}
-            = f.submit t('save'), class: 'button tiny right'
+
+        = render 'comments/form', station: @station, comment: @comment
       .large-3.columns
         %br

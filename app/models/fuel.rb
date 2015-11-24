@@ -3,5 +3,6 @@ class Fuel < ActiveRecord::Base
 
   validates :name, presence: true
 
-  has_many :prices
+  has_many :prices, dependent: :destroy
+  has_many :stations, through: :prices
 end

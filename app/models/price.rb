@@ -1,5 +1,8 @@
 class Price < ActiveRecord::Base
-  attr_accessor :maskared_value
+  attr_accessor :masked_value
+
+  validates :fuel_id, :station_id, :value, presence: true
+  validates :value, numericality: { greater_than: 0 }
 
   belongs_to :fuel
   belongs_to :station
@@ -9,7 +12,7 @@ class Price < ActiveRecord::Base
   delegate :name, :user_id, to: :station, prefix: true
   delegate :name, to: :fuel, prefix: true
 
-  def maskared_value=(value)
+  def masked_value=(value)
     self.value = value.gsub(',', '.')
   end
 end
