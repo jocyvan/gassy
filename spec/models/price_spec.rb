@@ -3,8 +3,8 @@ require "spec_helper"
 describe Price do
   subject { FactoryGirl.create(:price_gasoline) }
 
-  it { should have_db_index(:fuel_id) }
-  it { should have_db_index(:station_id) }
+  it { should have_db_index([:fuel_id, :station_id]) }
+  it { should have_db_index([:station_id, :fuel_id]) }
 
   it { should validate_presence_of(:fuel_id) }
   it { should validate_presence_of(:station_id) }
