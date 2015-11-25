@@ -42,4 +42,9 @@ Rails.application.configure do
 
   # Locale
   config.i18n.available_locales = ['pt-br', :en]
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+  end
 end

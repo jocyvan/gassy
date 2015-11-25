@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
+  validates :station_id, :content, presence: true
   validates :name, presence: true, if: "user.nil?"
-  validates :content, presence: true
 
   belongs_to :user
   belongs_to :station, counter_cache: true

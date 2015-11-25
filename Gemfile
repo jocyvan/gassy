@@ -57,6 +57,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'quiet_assets'
+  gem 'bullet'
 
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.5.0'

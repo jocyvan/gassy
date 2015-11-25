@@ -1,6 +1,5 @@
 = content_for :js do
-  = javascript_include_tag "https://www.google.com/jsapi"
-  = javascript_include_tag "jquery.maskMoney"
+  = javascript_include_tag "https://www.google.com/jsapi", "jquery.maskMoney"
   = javascript_tag do
     $(document).ready(function(){
     showMap(new google.maps.LatLng("#{@station.latitude}","#{@station.longitude}"));
@@ -102,8 +101,8 @@
       .large-6.columns
         %h5= t('comments')
         %hr
-        - if @station.comments.any?
-          - @station.comments.each do |comment|
+        - if @comments.any?
+          - @comments.each do |comment|
             .comment-content
               %b
                 - if comment.user

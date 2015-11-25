@@ -13,16 +13,23 @@ class StationsController < ApplicationController
   end
 
   def my
-    @stations = current_user.stations.where("name LIKE ?", "%#{params[:q]}%").page(params[:page])
+    @stations = current_user.stations.includes(:prices => :fuel).where("name LIKE ?", "%#{params[:q]}%").page(params[:page])
+    render :index
+  end
+
+  def favorites
+    @stations = current_user.followed_stations.includes(:prices => :fuel).where("name LIKE ?", "%#{params[:q]}%").page(params[:page])
     render :index
   end
 
   # GET /stations/1
   # GET /stations/1.json
   def show
-    @prices = @station.prices
-    @rates = @station.rates
-    @my_rate = @rates.where(user: current_user).first_or_initialize
+    @prices = @station.prices.includes(:fuel)
+
+    @my_rate = @station.rates.where(user: current_user).first_or_initialize
+
+    @comments = @station.comments.includes(:user)
     @comment = Comment.new(user: signed_in? ? current_user : nil)
   end
 
@@ -95,12 +102,6 @@ class StationsController < ApplicationController
     end
 
     render :rate_status
-  end
-
-  def favorites
-    @stations = current_user.followed_stations.where("name LIKE ?", "%#{params[:q]}%").page(params[:page])
-
-    render :index
   end
 
   def follow
