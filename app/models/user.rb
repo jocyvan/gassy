@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  before_destroy :clear_user
 
   enum role: [:user, :admin]
 
@@ -11,14 +10,10 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :stations
-  has_many :comments
+  has_many :stations, dependent: :nullify
+  has_many :comments, dependent: :destroy
+  has_many :rates, dependent: :destroy
+
   has_many :follows, dependent: :destroy
   has_many :followed_stations, through: :follows, source: :station
-
-  protected
-
-  def clear_user
-    self.stations.update_all(user_id: nil)
-  end
 end
