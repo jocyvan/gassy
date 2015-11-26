@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# Limited to Ruby 2.0 to deploy on shared host
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -39,10 +40,7 @@ gem 'impressionist', '1.5.1'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-group :development, :test do
+group :development do
   # Use Capistrano for deployment
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
@@ -58,7 +56,9 @@ group :development, :test do
 
   gem 'quiet_assets'
   gem 'bullet'
+end
 
+group :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'shoulda-matchers', '~> 3.0'

@@ -1,5 +1,5 @@
 !!!
-%html{:lang => "en"}
+%html{:lang => 'en'}
   %head
     = tag :meta, charset: 'utf-8'
     = tag :meta, :'http-equiv' => 'Content-Type', content: 'text/html; charset=UTF-8'
@@ -8,25 +8,27 @@
 
     %title= content_for?(:title) ? "Gassy - #{yield(:title)}" : "Gassy"
 
-    = stylesheet_link_tag :application
-    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
 
+    = stylesheet_link_tag :application
+
+    = javascript_include_tag 'vendor/modernizr'
+
   %body
-    = render 'layouts/navigation'
-    = render 'layouts/messages'
+    = render 'shared/navigation'
+    = render 'shared/messages'
 
     %main
       = yield
 
     %footer
-      = render  'layouts/footer'
+      = render 'shared/footer'
 
     = yield :modal
     #medium-modal.reveal-modal.medium{:'data-reveal' => ''}
     #small-modal.reveal-modal.small{:'data-reveal' => ''}
 
     = javascript_include_tag :application
-    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBiZilNtYRNKHXAOSmwmJapyNsklTyKQIk"
+    = javascript_include_tag '//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBiZilNtYRNKHXAOSmwmJapyNsklTyKQIk'
 
     = yield :js
