@@ -7,3 +7,7 @@ sudo: false
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
+addons:
+  code_climate:
+    repo_token:
+      secure: "D+c3bmjCB1gUBiu9KOuvdhJDDXPpNj7tDKeffaX4+kc3i02reTcIzkI1RwyijVwo/tsGdWp29qjbOpxc9Pf356fNUZe4ATUoBnpCljICxkZZMOrjRgnQHMxtR9Dzgsv6/k76k9+vadshjcGwoxe/V1LMCFCou5QaAKUTfCJu8k4AonbZvRYPxqkJgMX/M9TbzY2SIfDZFqPRRL6St5ZtfG6qdeVZmzpyWP2QkZFwvb2nsLi2rUf2CK5NzRdumeMtaOse4XO+qE3dL7DfUilMOeTLHcC6B0bUykUf5dW0/EfX1LJOtn2L2sXdDaboO2gL/o53BL76ecdGxokNCGc834zD9c0nq+IcU0ewIAyjX0RcV76+w0L9yLsszo3JvTYPoFIWMyGa+SviZQFVs8fDSB2QlAOIMq7pRj/0IQKbtwVc/JTK2cwotckSZ0zSYP49YdMMx/p/Zyf0VgFSupGhlVQLmA4gr4v70XqQ8WY47rlqvabzmpvlwHGBR9lZBUEsCfbRERPYCLt3VWC1+DtuFQbuHpnHQmeV0RznkjDCtkopzlqI0L8RiUd/ziRcglJZdI+eMMqXkuJdnzSi1EMnNiPZK6or1gm81XzhH03BjDSK98MvC+b+yq5IonbizKyqM7+cK7ANzz7AnQYuVKwBk/iCZZ/DjXe45kRMZ+AZa7c="
