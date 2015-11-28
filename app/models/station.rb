@@ -14,4 +14,6 @@ class Station < ActiveRecord::Base
 
   has_many :prices, dependent: :destroy
   has_many :fuels, through: :prices
+
+  delegate :name, to: :user, prefix: true
 end

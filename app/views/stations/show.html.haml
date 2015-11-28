@@ -84,6 +84,8 @@
           .fb-share-button.right{:'data-href' => station_url(@station), :'data-layout' => "button_count" }
           %br/
           %br/
+          - if can? :index, Station
+            %p== #{t('by')}: #{@station.user_name}
           %h5
             = t('fuels')
             = link_to fa_icon('plus', text: t('add_fuel')), new_station_price_path(@station), class: 'label small right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :update, @station

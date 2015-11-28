@@ -13,6 +13,8 @@
         %li.has-dropdown
           = link_to t('stations'), '#'
           %ul.dropdown
+            - if can? :index, Station
+              %li= link_to t('all_stations'), stations_path
             %li= link_to t('my_stations'), my_stations_path
             %li= link_to t('favorites'), favorites_stations_path
       / Right Nav Section

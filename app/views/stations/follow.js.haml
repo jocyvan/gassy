@@ -1,6 +1,3 @@
-- if @followed
-  var follow = "#{t('unfollow')}"
-- else
-  var follow = "#{t('follow')}"
+== var follow = "#{t(@followed ? 'unfollow' : 'follow')}"
 
 $('#follow-button').html(follow)
