@@ -219,7 +219,9 @@ pt-BR:
   we_need_your_current_password: 'Preencha com sua senha para efetuar qualquer alteração'
   logout: "Sair"
 
+  city: "Cidade"
   stations: "Postos"
+  all_stations: "Todos os postos"
   my_stations: "Meus postos"
   new_station: "Novo posto"
   editing_station: "Editando posto"
@@ -232,6 +234,7 @@ pt-BR:
   follow: 'Seguir'
   unfollow: 'Seguindo (desfazer)'
 
+  by: "Por"
   says: " diz: "
   fuel: "Combustível"
   fuels: "Combustíveis"

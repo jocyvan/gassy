@@ -19,3 +19,6 @@
 # Ignore some public files.
 /public/files
 /public/uploads
+
+# Ignore coverage report folder.
+/coverage

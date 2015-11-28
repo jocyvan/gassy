@@ -1,3 +1,8 @@
+if ENV['RAILS_ENV'] = 'test'
+  require 'simplecov'
+  SimpleCov.start
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -6,12 +11,17 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # require 'spec_helper'
 require 'rspec/rails'
 require 'database_cleaner'
+require 'codeclimate-test-reporter'
+
+CodeClimate::TestReporter.start
 
 DatabaseCleaner.strategy = :truncation
 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, type: :controller
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

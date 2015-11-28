@@ -9,7 +9,7 @@ class StationsController < ApplicationController
   # GET /stations
   # GET /stations.json
   def index
-    @stations = Station.page(params[:page])
+    @stations = Station.includes(:user, :prices => :fuel).page(params[:page])
   end
 
   def my
@@ -83,42 +83,26 @@ class StationsController < ApplicationController
   end
 
   def like
-    @rate = Rate.where(user: current_user, station: @station).first
-    if @rate
-      @rate.update_attribute(:status, 0)
-    else
-      @rate = Rate.create!(user: current_user, station: @station, status: :like)
-    end
+    @rate = Rate.create_with(status: :like).find_or_create_by(user: current_user, station: @station)
+    @rate.update_attributes(status: :like)
 
     render :rate_status
   end
 
   def unlike
-    @rate = Rate.where(user: current_user, station: @station).first
-    if @rate
-      @rate.update_attribute(:status, 1)
-    else
-      @rate = Rate.create!(user: current_user, station: @station, status: :unlike)
-    end
+    @rate = Rate.create_with(status: :unlike).find_or_create_by(user: current_user, station: @station)
+    @rate.update_attributes(status: :unlike)
 
     render :rate_status
   end
 
   def follow
-    if current_user.followed_stations.include?(@station)
-      follow = current_user.follows.where(station_id: @station.id)
-      if follow.destroy_all
-        @followed = false
-      else
-        @followed = true
-      end
+    follow = current_user.follows.where(station_id: @station.id).first_or_initialize
+    if follow.new_record? && follow.save
+      @followed = true
     else
-      follow = Follow.new(user: current_user, station: @station)
-      if follow.save
-        @followed = true
-      else
-        @followed = false
-      end
+      follow.destroy
+      @followed = false
     end
   end
 

@@ -17,4 +17,9 @@ describe Price do
   it { should delegate_method(:name).to(:station).with_prefix(true) }
   it { should delegate_method(:user_id).to(:station).with_prefix(true) }
   it { should delegate_method(:name).to(:fuel).with_prefix(true) }
+
+  it 'should have masked value' do
+    subject.masked_value = '3,31'
+    expect(subject.value).to eq(3.31)
+  end
 end

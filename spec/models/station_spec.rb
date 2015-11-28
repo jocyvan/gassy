@@ -16,4 +16,6 @@ describe Station do
 
   it { should have_many(:prices).dependent(:destroy) }
   it { should have_many(:fuels).through(:prices) }
+
+  it { should delegate_method(:name).to(:user).with_prefix(true) }
 end
