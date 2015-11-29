@@ -288,4 +288,3 @@ pt-BR:
   fuel_successfully_created: 'Tipo de combustível criado com sucesso.'
   fuel_successfully_updated: 'Tipo de combustível atualizado com sucesso.'
   fuel_successfully_destroyed: 'Tipo de combustível excluido com sucesso.'
-  fuel_has_prices: 'Já possui combustíveis com esse tipo. Apenas inative-o.'

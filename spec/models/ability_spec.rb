@@ -12,6 +12,12 @@ describe Ability do
     it 'should be able to manage everything' do
       expect(subject.can?(:manage, :all)).to be true
     end
+
+    it 'should not be able to delete fuels with price' do
+      fuel = FactoryGirl.create(:fuel_gasoline)
+      FactoryGirl.create(:price_gasoline, fuel: fuel)
+      expect(subject.can?(:destroy, fuel)).to be false
+    end
   end
 
   context 'normal user' do

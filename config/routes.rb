@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :fuels
+  resources :fuels, except: :show
   resources :stations do
     resources :prices, except: [:index, :show]
     resources :comments, only: [:create, :delete]

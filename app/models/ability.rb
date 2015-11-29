@@ -7,6 +7,10 @@ class Ability
     if user.persisted?
       if user.admin?
         can :manage, :all
+
+        cannot :destroy, Fuel do |fuel|
+          fuel.prices.size > 0
+        end
       else
         can [:show, :update], User, id: user.id
 

@@ -4,7 +4,7 @@ class Price < ActiveRecord::Base
   validates :fuel_id, :station_id, :value, presence: true
   validates :value, numericality: { greater_than: 0 }
 
-  belongs_to :fuel
+  belongs_to :fuel, counter_cache: true
   belongs_to :station
 
   scope :uniq_prices, -> { select("DISTINCT(prices.fuel_id), prices.*").order("fuel_id, created_at DESC") }

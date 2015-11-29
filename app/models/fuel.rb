@@ -1,7 +1,7 @@
 class Fuel < ActiveRecord::Base
   enum status: [:active, :inactive]
 
-  validates :name, presence: true
+  validates :name, :status, presence: true
 
   has_many :prices, dependent: :destroy
   has_many :stations, through: :prices

@@ -6,6 +6,7 @@ describe Fuel do
   it { should define_enum_for(:status) }
 
   it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:status) }
 
   it { should have_many(:prices).dependent(:destroy) }
   it { should have_many(:stations).through(:prices) }

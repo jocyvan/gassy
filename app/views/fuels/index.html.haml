@@ -20,10 +20,9 @@
             %td= fuel.status
             %td.text-center
               = link_to fa_icon('pencil'), edit_fuel_path(fuel), data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :update, fuel
-              = link_to fa_icon('times'), fuel, :method => :delete, :data => { :confirm => t('are_you_sure') }
+              = link_to fa_icon('times'), fuel, :method => :delete, :data => { :confirm => t('are_you_sure') } if can? :destroy, fuel
     - if @fuels.empty?
       .text-center= t('no_fuel_yet')
-
 
   .large-3.columns
     %br

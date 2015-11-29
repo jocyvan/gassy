@@ -39,7 +39,7 @@ describe StationsController do
         @station = FactoryGirl.create(:station, user: user)
       end
 
-      it 'renders my stations in :index view' do
+      it 'populates an array of my stations' do
         get :my
         expect(response).to have_http_status(:success)
         expect(assigns(:stations)).to eq([@station])
@@ -51,14 +51,17 @@ describe StationsController do
   describe 'GET favorites' do
     context 'normal user' do
       before do
-        user = FactoryGirl.create(:user)
-        sign_in user
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+        @station = FactoryGirl.create(:station)
       end
 
-      it 'renders my favorite stations in :index view' do
+      it 'populates an array of my favorite stations' do
+        FactoryGirl.create(:follow, user: @user, station: @station)
+
         get :favorites
         expect(response).to have_http_status(:success)
-        # expect(assigns(:stations)).to eq([@station])
+        expect(assigns(:stations)).to eq([@station])
         expect(response).to render_template :index
       end
     end
