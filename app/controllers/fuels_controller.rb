@@ -1,17 +1,12 @@
 class FuelsController < ApplicationController
-  before_action :set_fuel, only: [:show, :edit, :update, :destroy]
+  before_action :set_fuel, only: [:edit, :update, :destroy]
 
   authorize_resource
 
   # GET /fuels
   # GET /fuels.json
   def index
-    @fuels = Fuel.all
-  end
-
-  # GET /fuels/1
-  # GET /fuels/1.json
-  def show
+    @fuels = Fuel.order(:name)
   end
 
   # GET /fuels/new
@@ -32,7 +27,7 @@ class FuelsController < ApplicationController
 
     respond_to do |format|
       if @fuel.save
-        format.html { redirect_to fuels_url, notice: t('fuel_successfully_created') }
+        format.html { redirect_to fuels_path, notice: t('fuel_successfully_created') }
         format.json { render :show, status: :created, location: @fuel }
       else
         format.html { render :new }
@@ -46,7 +41,7 @@ class FuelsController < ApplicationController
   def update
     respond_to do |format|
       if @fuel.update(fuel_params)
-        format.html { redirect_to fuels_url, notice: t('fuel_successfully_updated') }
+        format.html { redirect_to fuels_path, notice: t('fuel_successfully_updated') }
         format.json { render :show, status: :ok, location: @fuel }
       else
         format.html { render :edit }
@@ -58,14 +53,10 @@ class FuelsController < ApplicationController
   # DELETE /fuels/1
   # DELETE /fuels/1.json
   def destroy
-    if @fuel.prices.count == 0
-      @fuel.destroy
-      respond_to do |format|
-        format.html { redirect_to fuels_url, notice: t('fuel_successfully_destroyed') }
-        format.json { head :no_content }
-      end
-    else
-      redirect_to fuels_url, alert: t('fuel_has_prices')
+    @fuel.destroy
+    respond_to do |format|
+      format.html { redirect_to fuels_url, notice: t('fuel_successfully_destroyed') }
+      format.json { head :no_content }
     end
   end
 
