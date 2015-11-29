@@ -9,5 +9,5 @@
 User.create!(name: 'Jocyvan Castro', email: 'jocyvan.castro@gmail.com', password: 'testes', password_confirmation: 'testes', role: :admin)
 User.create!(name: 'Eduardo Carneiro', email: 'eduardolcarneiro@gmail.com', password: 'testes', password_confirmation: 'testes')
 
-Fuel.create!(name: 'Gasolina')
-Fuel.create!(name: 'Diesel')
+Fuel.create!(name: 'Gasolina', status: :active)
+Fuel.create!(name: 'Diesel', status: :active)
