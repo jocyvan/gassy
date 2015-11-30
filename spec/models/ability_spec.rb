@@ -120,23 +120,23 @@ describe Ability do
       expect(subject.can?(:follow, FactoryGirl.build(:station))).to be true
     end
 
-    it 'should be able to create prices' do
+    it 'should be able to create prices from own stations' do
       expect(subject.can?(:create, FactoryGirl.build(:price_gasoline, station: FactoryGirl.build(:station, user: user)))).to be true
     end
 
-    it 'should be able to update own prices' do
+    it 'should be able to update prices from own stations' do
       expect(subject.can?(:update, FactoryGirl.build(:price_gasoline, station: FactoryGirl.build(:station, user: user)))).to be true
     end
 
-    it 'should not be able to update other user prices' do
+    it "should not be able to update prices from other user's stations" do
       expect(subject.can?(:update, FactoryGirl.build(:price_gasoline, station: FactoryGirl.build(:station, user: other_user)))).to be false
     end
 
-    it 'should be able to delete own prices' do
+    it 'should be able to delete prices from own stations' do
       expect(subject.can?(:destroy, FactoryGirl.build(:price_gasoline, station: FactoryGirl.build(:station, user: user)))).to be true
     end
 
-    it 'should not be able to delete other user prices' do
+    it "should not be able to delete prices from other user's stations" do
       expect(subject.can?(:destroy, FactoryGirl.build(:price_gasoline, station: FactoryGirl.build(:station, user: other_user)))).to be false
     end
   end
@@ -226,11 +226,11 @@ describe Ability do
       expect(subject.can?(:create, FactoryGirl.build(:price_gasoline))).to be false
     end
 
-    it 'should not be able to update own prices' do
+    it 'should not be able to update prices' do
       expect(subject.can?(:update, FactoryGirl.build(:price_gasoline))).to be false
     end
 
-    it 'should not be able to delete own prices' do
+    it 'should not be able to delete prices' do
       expect(subject.can?(:destroy, FactoryGirl.build(:price_gasoline))).to be false
     end
   end
