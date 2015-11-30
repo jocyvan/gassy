@@ -28,5 +28,6 @@ class Ability
       end
     end
     can :show, Station
+    can :create, Comment
   end
 end
