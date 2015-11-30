@@ -14,7 +14,7 @@
         = f.input :password, autocomplete: "off", hint: t('leave_it_blank')
         = f.input :password_confirmation
         = f.input :current_password, hint: t('we_need_your_current_password')
-        = f.button :submit, t('helpers.submit.update', model: 'perfil'), class: 'right tiny'
+        = f.button :submit, t('helpers.submit.update', model: 'perfil'), :'data-disable-with' => t('helpers.on_disable'), class: 'right tiny'
 
     = t('unhappy')
     = link_to t('cancel_your_account'), registration_path(resource_name), data: { confirm: t('are_you_sure') }, method: :delete

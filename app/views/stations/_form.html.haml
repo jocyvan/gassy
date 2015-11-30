@@ -18,5 +18,5 @@
 
   .row
     .large-12.columns{style: 'margin-top: 1.25rem'}
-      = f.submit t('helpers.submit.submit', model: 'posto'), class: 'small right button'
+      = f.button :submit, t('helpers.submit.save', model: 'posto'), :'data-disable-with' => t('helpers.on_disable'), class: 'small right button'
       = link_to t('back'), :back, class: 'button small right back secondary' unless f.object.new_record?

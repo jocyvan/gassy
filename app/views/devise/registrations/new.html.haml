@@ -10,6 +10,6 @@
         = f.input :email
         = f.input :password, hint: (t('minimum_characters', number: @minimum_password_length) if @minimum_password_length)
         = f.input :password_confirmation
-        = f.button :submit, t('save'), class: 'small right'
+        = f.button :submit, :'data-disable-with' => t('helpers.on_disable'), class: 'small right'
   .large-6.columns
     %br

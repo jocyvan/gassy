@@ -106,6 +106,8 @@
         - if @comments.any?
           - @comments.each do |comment|
             .comment-content
+              - if can? :destroy, comment
+                = link_to fa_icon('times'), [@station, comment], method: :delete, class: 'label alert', title: t('delete'), 'data-confirm' => t('are_you_sure')
               %b
                 - if comment.user
                   = fa_icon('user', text: "#{comment.user_name}", title: "#{Rails.application.class.parent_name} user", class: 'primary', right: true)
@@ -113,7 +115,7 @@
                   = comment.name
                 = t('says')
               = comment.content
-              %small.secondary#date= l(comment.created_at, format: :short)
+              %small.secondary.date= l(comment.created_at, format: :short)
         - else
           .text-center= t('no_comments_yet')
 
