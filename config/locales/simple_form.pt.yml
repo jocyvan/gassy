@@ -27,6 +27,7 @@ pt-BR:
     select:
       prompt: Por favor selecione
     submit:
+      send: Enviar
       create: Criar %{model}
       save: Salvar %{model}
       update: Atualizar %{model}

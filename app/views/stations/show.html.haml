@@ -98,9 +98,7 @@
           / #chart_div
           / #columns_chart_div
     .row
-      .large-3.columns
-        %br
-      .large-6.columns
+      .large-6.medium-8.columns.large-centered.medium-centered
         %h5= t('comments')
         %hr
         - if @comments.any?
@@ -120,5 +118,3 @@
           .text-center= t('no_comments_yet')
 
         = render 'comments/form', station: @station, comment: @comment
-      .large-3.columns
-        %br

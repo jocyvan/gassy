@@ -205,6 +205,7 @@ pt-BR:
   sign_in: "Entrar"
   sign_up: "Cadastrar-se"
   forgot_your_password: 'Esqueceu a senha?'
+  send_instructions: 'Enviar instruções'
   unhappy: 'Insatisfeito?'
   cancel_your_account: 'Cancele sua conta'
   leave_it_blank: 'Deixe-o em branco se não pretende alterá-lo'

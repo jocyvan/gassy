@@ -1,12 +1,8 @@
 .row
-  .large-3.columns
-    %br
-  .large-6.columns
+  .large-6.medium-8.columns.large-centered.medium-centered
     .authform
-      %h4 Forgot your password?
+      %h4= t('forgot_your_password')
       %hr
       = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
         = f.input :email, required: true, autofocus: true
-        = f.button :submit, "Send me reset password instructions", class: 'small right'
-  .large-6.columns
-    %br
+        = f.button :submit, t('send_instructions'), :'data-disable-with' => t('helpers.on_disable'), class: 'small right'

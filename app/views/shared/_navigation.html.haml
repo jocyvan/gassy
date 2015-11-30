@@ -5,7 +5,7 @@
         = link_to 'Gassy', root_path
     / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
     %li.toggle-topbar.menu-icon
-      = link_to 'Menu', '#'
+      = link_to fa_icon('navicon', text: 'Menu'), '#'
   %section.top-bar-section
     - if user_signed_in?
       / Left Nav Section

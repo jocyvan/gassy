@@ -1,7 +1,5 @@
 .row
-  .large-3.columns
-    %br
-  .large-6.columns
+  .large-6.medium-8.columns.large-centered.medium-centered
     .authform
       %h4= t('editing_profile')
       %hr
@@ -9,8 +7,7 @@
         = f.input :name
         = f.input :email
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          %p
-            Currently waiting confirmation for: #{resource.unconfirmed_email}
+          %p== Currently waiting confirmation for: #{resource.unconfirmed_email}
         = f.input :password, autocomplete: "off", hint: t('leave_it_blank')
         = f.input :password_confirmation
         = f.input :current_password, hint: t('we_need_your_current_password')
@@ -18,5 +15,3 @@
 
     = t('unhappy')
     = link_to t('cancel_your_account'), registration_path(resource_name), data: { confirm: t('are_you_sure') }, method: :delete
-  .large-3.columns
-    %br
