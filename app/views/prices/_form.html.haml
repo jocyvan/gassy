@@ -4,4 +4,4 @@
     = f.input :masked_value, as: :string
 
   .form-actions
-    = f.submit t('helpers.submit.submit', model: 'combustível'), class: 'tiny right button'
+    = f.button :submit, t('helpers.submit.save', model: 'combustível'), :'data-disable-with' => t('helpers.on_disable'), class: 'tiny right button'

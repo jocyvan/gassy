@@ -129,13 +129,6 @@ pt-BR:
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros.'
-  helpers:
-    select:
-      prompt: Por favor selecione
-    submit:
-      create: Criar %{model}
-      submit: Salvar %{model}
-      update: Atualizar %{model}
   number:
     currency:
       format:
@@ -212,6 +205,7 @@ pt-BR:
   sign_in: "Entrar"
   sign_up: "Cadastrar-se"
   forgot_your_password: 'Esqueceu a senha?'
+  send_instructions: 'Enviar instruções'
   unhappy: 'Insatisfeito?'
   cancel_your_account: 'Cancele sua conta'
   leave_it_blank: 'Deixe-o em branco se não pretende alterá-lo'
@@ -267,7 +261,6 @@ pt-BR:
   no_station_for: "Nenhum posto encontrado para '%{q}'"
   no_comments_yet: "Nenhum comentário ainda"
 
-  save: "Salvar"
   comment: "Comentário"
   comments: "Comentários"
 
@@ -277,14 +270,19 @@ pt-BR:
   cheapest: "Mais barato"
   closer: "Mais perto"
 
+  required_fields: 'Por favor, preencha os campos requeridos.'
+
   station_successfully_created: 'Posto criado com sucesso.'
   station_successfully_updated: 'Posto atualizado com sucesso.'
-  station_successfully_destroyed: 'Posto excluido com sucesso.'
+  station_successfully_destroyed: 'Posto excluído com sucesso.'
 
   price_successfully_created: 'Combustível criado com sucesso.'
   price_successfully_updated: 'Combustível atualizado com sucesso.'
-  price_successfully_destroyed: 'Combustível excluido com sucesso.'
+  price_successfully_destroyed: 'Combustível excluído com sucesso.'
 
   fuel_successfully_created: 'Tipo de combustível criado com sucesso.'
   fuel_successfully_updated: 'Tipo de combustível atualizado com sucesso.'
-  fuel_successfully_destroyed: 'Tipo de combustível excluido com sucesso.'
+  fuel_successfully_destroyed: 'Tipo de combustível excluído com sucesso.'
+
+  comment_successfully_created: 'Comentário enviado com sucesso.'
+  comment_successfully_destroyed: 'Comentário excluído com sucesso.'

@@ -1,18 +1,17 @@
-- content_for :title do
-  Sign in
 .row
-  .large-3.columns
-    %br
-  .large-6.columns
+  .large-6.medium-8.columns.large-centered.medium-centered
     .authform
       %h4= t('sign_in')
       %hr
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        = link_to t('sign_up'), new_registration_path(resource_name), class: 'right'
         = f.input :email, required: false, autofocus: true
-        = link_to t("forgot_your_password"), new_password_path(resource_name), class: 'right'
-        = f.input :password, required: false
-        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-        = f.button :submit, t('sign_in'), class: 'small right'
-  .large-3.columns
-    %br
+        = f.label :password, required: false
+        .row.collapse
+          .medium-8.columns
+            = f.input :password, label: false
+          .medium-4.columns
+            = f.button :submit, t('helpers.submit.send'), :'data-disable-with' => t('helpers.on_disable'), class: 'button postfix'
+        = link_to t("forgot_your_password"), new_password_path(resource_name)
+        %hr/
+        %br/
+        = link_to t('sign_up'), new_registration_path(resource_name), class: 'button success expand'

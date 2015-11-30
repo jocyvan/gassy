@@ -1,7 +1,5 @@
 .row
-  .large-3.columns
-    %br
-  .large-6.columns
+  .large-6.medium-8.columns.large-centered.medium-centered
     %h4
       = t('listing_fuels')
       = link_to t('new_fuel'), new_fuel_path, class: 'button tiny right', data: { :'reveal-id' => 'small-modal', :'reveal-ajax' => true } if can? :create, Fuel
@@ -23,6 +21,3 @@
               = link_to fa_icon('times'), fuel, :method => :delete, :data => { :confirm => t('are_you_sure') } if can? :destroy, fuel
     - if @fuels.empty?
       .text-center= t('no_fuel_yet')
-
-  .large-3.columns
-    %br

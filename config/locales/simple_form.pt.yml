@@ -8,9 +8,10 @@ pt-BR:
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: "<abbr title="required">*</abbr>"
+
     error_notification:
       default_message: "Por favor, revise os problemas abaixo:"
-    # Examples
+
     labels:
       defaults:
         password: "Senha"
@@ -21,18 +22,13 @@ pt-BR:
         current_password: "Senha atual"
         fuel: "Combustível"
         masked_value: "Valor"
-    #   user:
-    #     new:
-    #       email: "E-mail to sign in."
-    #     edit:
-    #       email: "E-mail."
-    # hints:
-    #   defaults:
-    #     username: "User name to sign in."
-    #     password: "No special characters, please."
-    # include_blanks:
-    #   defaults:
-    #     age: "Rather not say"
-    # prompts:
-    #   defaults:
-    #     age: "Select your age"
+
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      send: Enviar
+      create: Criar %{model}
+      save: Salvar %{model}
+      update: Atualizar %{model}
+    on_disable: "Enviando..."

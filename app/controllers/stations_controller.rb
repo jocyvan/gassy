@@ -9,7 +9,7 @@ class StationsController < ApplicationController
   # GET /stations
   # GET /stations.json
   def index
-    @stations = Station.includes(:user, :prices => :fuel).page(params[:page])
+    @stations = Station.includes(:user, :prices => :fuel).page(params[:page]).per(40)
   end
 
   def my

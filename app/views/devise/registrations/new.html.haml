@@ -1,7 +1,5 @@
 .row
-  .large-3.columns
-    %br
-  .large-6.columns
+  .large-6.medium-8.columns.large-centered.medium-centered
     .authform
       %h4= t('sign_up')
       %hr
@@ -10,6 +8,4 @@
         = f.input :email
         = f.input :password, hint: (t('minimum_characters', number: @minimum_password_length) if @minimum_password_length)
         = f.input :password_confirmation
-        = f.button :submit, t('save'), class: 'small right'
-  .large-6.columns
-    %br
+        = f.button :submit, t('helpers.submit.send'), :'data-disable-with' => t('helpers.on_disable'), class: 'small right'
