@@ -32,11 +32,11 @@ FactoryGirl.define do
   factory :price_gasoline, class: Price do
     association :fuel, :factory => :fuel_gasoline
     station
-    value 3.2
+    masked_value '3.45'
 
     factory :price_diesel do
       fuel_diesel
-      value 2.8
+      masked_value '2.82'
     end
   end
 

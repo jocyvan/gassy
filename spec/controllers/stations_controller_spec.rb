@@ -12,7 +12,7 @@ describe StationsController do
       it 'populates an array of stations' do
         get :index
         expect(response).to have_http_status(:success)
-        expect(assigns(:stations)).to eq([@station])
+        expect(assigns(:stations)).to include @station
         expect(response).to render_template :index
       end
     end
