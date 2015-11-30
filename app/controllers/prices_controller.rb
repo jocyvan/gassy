@@ -1,18 +1,15 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: [:show, :edit, :update, :destroy]
+  before_action :set_price, only: :destroy
   before_filter :set_station
-  before_filter :load_fuels, only: [:new, :create, :edit, :update]
+  before_filter :load_fuels, only: [:new, :create]
 
   load_and_authorize_resource
+  skip_load_resource only: :new
 
   # GET /prices/new
   def new
-    @price = Price.new
+    @price = @station.prices.new
     render layout: false
-  end
-
-  # GET /prices/1/edit
-  def edit
   end
 
   # POST /prices
@@ -26,20 +23,6 @@ class PricesController < ApplicationController
         format.json { render :show, status: :created, location: @price }
       else
         format.html { render :new }
-        format.json { render json: @price.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /prices/1
-  # PATCH/PUT /prices/1.json
-  def update
-    respond_to do |format|
-      if @price.update(price_params)
-        format.html { redirect_to @price, notice: t('price_successfully_updated') }
-        format.json { render :show, status: :ok, location: @price }
-      else
-        format.html { render :edit }
         format.json { render json: @price.errors, status: :unprocessable_entity }
       end
     end

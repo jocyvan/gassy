@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   resources :fuels, except: :show
   resources :stations do
-    resources :prices, except: [:index, :show]
-    resources :comments, only: [:create, :delete]
+    resources :prices, only: [:new, :create, :destroy]
+    resources :comments, only: [:create, :destroy]
     collection { get :my, :favorites }
     member { get :like, :unlike, :follow }
   end
