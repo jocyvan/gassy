@@ -24,15 +24,15 @@ describe Comment do
 
   it { should delegate_method(:name).to(:user).with_prefix(true) }
 
-  it 'should be included comment in this month scope' do
+  it 'should include comment in this month scope' do
     expect(Comment.this_month).to include subject
   end
 
-  it 'should be included comment in prev month scope' do
-    expect(Comment.prev_month).to include FactoryGirl.create(:comment, created_at: Date.today - 1.month)
+  it 'should include comment in prev month scope' do
+    expect(Comment.prev_month).to include FactoryGirl.create(:comment, created_at: Time.zone.now - 1.month)
   end
 
-  it 'should be included comment in prev_2 month scope' do
-    expect(Comment.prev_2_month).to include FactoryGirl.create(:comment, created_at: Date.today - 2.months)
+  it 'should include comment in prev_2 month scope' do
+    expect(Comment.prev_2_month).to include FactoryGirl.create(:comment, created_at: Time.zone.now - 2.months)
   end
 end
