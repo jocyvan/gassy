@@ -1,0 +1,162 @@
+@charset "UTF-8"
+
+@import foundation_and_overrides
+@import font-awesome
+
+.primary
+  color: $primary-color
+
+.secondary
+  color: $secondary-color
+
+.info
+  color: $info-color
+
+body
+  background-color: #eee
+
+main
+  background-color: $white
+  width: 80%
+  min-width: 100px
+  min-height: 85%
+  margin: 0 auto 2px
+  padding: 1rem 0
+  box-shadow: 0 0 0.325rem 0 rgba(0, 0, 0, 0.5)
+
+@media all and (max-width: $small-breakpoint)
+  main
+    width: 100%
+
+footer
+  background-color: #eee
+  padding: 1rem 0
+
+.reveal-modal#station-modal
+  padding: 0
+
+#map-canvas
+  min-height: 32rem
+  margin-bottom: 2rem
+  position: relative
+
+//============================================================
+//  Alert-box Z
+//============================================================
+.alert-box
+  bottom: 3rem
+  left: -100%
+  position: fixed
+  width: 21rem
+  z-index: 999
+
+.hint
+  color: $secondary-color
+  font-size: 12px
+  margin-top: -1rem
+  min-height: 1rem
+
+.authform
+  @extend .panel
+  margin: 0 auto
+  overflow: hidden
+  .button.right
+    margin-bottom: 0
+
+.stationform
+  @extend .authform
+
+// ====================================
+// Station
+// ====================================
+
+.station-card
+  $corner: 5px
+  z-index: 5
+  border-radius: $corner
+  border: 1px solid #eee
+  box-shadow: 0
+  transition: box-shadow 0.2s
+  position: relative
+  a, a:hover
+    color: #000
+  #image-map
+    border-bottom-left-radius: $corner
+    border-top-left-radius: $corner
+    min-height: 8.5rem
+    background-position: center
+  &:hover
+    box-shadow: 0 0 5px #bbb
+  .header
+    font-family: 'OpenSansBold'
+    background-color: $primary-color
+    color: $white
+    min-height: 35%
+    border-top-right-radius: $corner
+    padding: 0.5rem
+  .body
+    padding: 0.5rem
+    .right
+      color: #bbb
+
+.station-show
+  .header
+    font-family: 'OpenSansBold'
+    background-color: $primary-color
+    color: $white
+    padding: 1rem 0.5rem
+    margin-top: -1rem
+    .like
+      font-size: 20px
+      color: $white
+      margin-right: 0.5rem
+      &:hover, &.active
+        color: $secondary-color
+    .unlike
+      font-size: 20px
+      color: $white
+      margin-right: 0.5rem
+      &:hover, &.active
+        color: $alert-color
+  .body
+    .row.collapse
+      margin: 0
+      max-width: 100%
+    .content
+      padding: 0 1rem
+      .label, a, a:hover
+        color: $white
+  .comment-content
+    position: relative
+    .date
+      position: absolute
+      bottom: 0px
+      right: 0px
+
+.ribbon
+  z-index: 9
+  position: absolute
+  top: -0.15rem
+  right: 0.5%
+  width: 25px
+  transition: box-shadow 0.2s
+  background: $primary-color
+  padding: 0.2em 0
+  margin-right: 0.45rem
+  text-align: center
+  a, a:hover
+    color: $white
+  &:hover
+    box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.5)
+  &.secondary
+    background: $secondary-color
+    right: 2.45rem
+  &.alert
+    background: $alert-color
+  &.success
+    background: $success-color
+  &.warning
+    background: $warning-color
+  &.info
+    background: $info-color
+    right: 0.45rem
