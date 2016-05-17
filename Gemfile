@@ -33,6 +33,7 @@ gem 'devise', '3.5.2'
 gem 'cancancan', '1.12.0'
 gem 'kaminari', '0.16.3'
 gem 'impressionist', '1.5.1'
+gem 'browser', '2.1.0'
 
 gem 'omniauth-facebook', '3.0.0'
 

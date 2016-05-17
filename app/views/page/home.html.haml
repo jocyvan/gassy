@@ -2,7 +2,8 @@
   = javascript_tag do
     $(document).ready(function(){
     if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showMap);
+    - unless browser.chrome?
+      navigator.geolocation.getCurrentPosition(showMap);
     }
     });
 
@@ -62,7 +63,11 @@
     %br
 
 -# %p= image_tag 'http://placehold.it/1050x500'
-#map-canvas
+- if browser.chrome?
+  .panel.text-center
+    %small== Devido a políticas do Chrome, o radar com os postos próximos do você não poderá aparecer. Por favor, use outro navegador ou somente veja a lista da postos próximos que segue. Leia mais sobre a política #{link_to 'clicando aqui', 'https://goo.gl/rStTGz', target: '_blank'}.
+- else
+  #map-canvas
 
 .row
   .large-12.columns
