@@ -1,6 +1,14 @@
 = content_for :js do
   = javascript_tag do
     $(document).ready(function(){
+
+    $(window).keydown(function(event){
+    if($('#station_city').is(':focus') && event.keyCode == 13) {
+    event.preventDefault();
+    return false;
+    }
+    });
+
     - if station.new_record?
       autocompleteCity('station');
     - else
