@@ -25,7 +25,7 @@ pt-BR:
         subject: "Instruções de desbloqueio"
     omniauth_callbacks:
       failure: "Não pode conectar com %{kind} por que \"%{reason}\"."
-      success: "Conectou coma conta %{kind}."
+      success: "Conectou como %{kind}."
     passwords:
       no_token: "Você so pode acessar essa página a partir de um e-mail de restauração de senha."
       send_instructions: "Em alguns minutos, você receberá um e-mail com as instruções."
