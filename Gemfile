@@ -34,6 +34,8 @@ gem 'cancancan', '1.12.0'
 gem 'kaminari', '0.16.3'
 gem 'impressionist', '1.5.1'
 
+gem 'omniauth-facebook', '3.0.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
