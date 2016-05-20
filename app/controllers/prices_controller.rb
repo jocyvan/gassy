@@ -4,7 +4,7 @@ class PricesController < ApplicationController
   before_filter :load_fuels, only: [:new, :create]
 
   load_and_authorize_resource
-  skip_load_resource only: :new
+  skip_load_resource only: [:new, :create]
 
   # GET /prices/new
   def new
