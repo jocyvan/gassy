@@ -1,7 +1,11 @@
 = simple_form_for([station, price]) do |f|
   .form-inputs
-    = f.association :fuel, collection: fuels, selected: fuels.first
-    = f.input :masked_value, as: :string
+    .row.collapse
+      .medium-12.columns= f.association :fuel, collection: fuels, selected: fuels.first
+    .row.collapse
+      .medium-3.columns
+        %span.prefix R$
+      .medium-9.columns= f.input :masked_value, as: :string, label: false, placeholder: '00,000'
 
   .form-actions
     = f.button :submit, t('helpers.submit.save', model: 'combustível'), :'data-disable-with' => t('helpers.on_disable'), class: 'tiny right button'
